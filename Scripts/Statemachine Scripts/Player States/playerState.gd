@@ -1,8 +1,21 @@
 class_name PlayerState extends State
 
-var controller: PlayerController
-var data: PlayerData
+@export var animation_name: String
 
-func _init(cont: PlayerController, d: PlayerData):
-	controller = cont
-	data = d
+var parent: Player
+
+func enter():
+	#parent.animations.play(animation_name)
+	pass
+	
+func exit():
+	pass
+
+func process_input(event) -> State:
+	return null
+	
+func process_frame(delta: float) -> State:
+	return null
+
+func process_physics(delta:float) -> State:
+	return null
