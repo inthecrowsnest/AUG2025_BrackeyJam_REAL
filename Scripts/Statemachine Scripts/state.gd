@@ -7,7 +7,7 @@ func enter():
 	pass
 	
 func exit():
-	pass
+	isExiting = true
 	
 func process():
 	pass
