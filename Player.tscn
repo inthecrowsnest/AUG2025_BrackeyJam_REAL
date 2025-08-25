@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwtldahhr7403"]
+
+[ext_resource type="Script" uid="uid://bq1dv5i2d82dk" path="res://Scripts/player.gd" id="1_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://cxmfcom4px13c" path="res://icon.svg" id="2_kne1u"]
+[ext_resource type="PackedScene" uid="uid://c6qnvbpklxjtg" path="res://healthBar.tscn" id="3_kne1u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4pfd"]
+size = Vector2(25, 26)
+
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("timer")]
+motion_mode = 1
+script = ExtResource("1_kpjcp")
+timer = NodePath("DashTimer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_kne1u")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+scale = Vector2(1.3, 1.3)
+shape = SubResource("RectangleShape2D_d4pfd")
+
+[node name="DashTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.2
+one_shot = true
+
+[node name="healthBar" parent="." instance=ExtResource("3_kne1u")]
+offset_left = -18.0
+offset_top = -29.0
+offset_right = 16.0
+offset_bottom = -25.0
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
