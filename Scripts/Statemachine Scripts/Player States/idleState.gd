@@ -3,9 +3,11 @@ extends PlayerState
 @export var moveState: State
 
 func enter():
+	super()
 	parent.velocity = Vector2.ZERO
 	
 func exit():
+	super()
 	pass
 
 func process_input(event) -> State:

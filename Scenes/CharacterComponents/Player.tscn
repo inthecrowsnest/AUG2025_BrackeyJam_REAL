@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm44txshdulyl"]
+[gd_scene load_steps=9 format=3 uid="uid://dm44txshdulyl"]
 
 [ext_resource type="Script" uid="uid://bkmt5u0efj8e" path="res://Scripts/playerController.gd" id="1_2xyk0"]
 [ext_resource type="Texture2D" uid="uid://cxmfcom4px13c" path="res://icon.svg" id="1_d4pfd"]
+[ext_resource type="PackedScene" uid="uid://c6qnvbpklxjtg" path="res://healthBar.tscn" id="2_tb0jd"]
 [ext_resource type="Script" uid="uid://bve5k6rqag58x" path="res://Scripts/Statemachine Scripts/Player States/idleState.gd" id="3_2xyk0"]
 [ext_resource type="Script" uid="uid://7stqwqg0r7qk" path="res://Scripts/Statemachine Scripts/stateMachine.gd" id="3_hpckh"]
 [ext_resource type="Script" uid="uid://dj8tm21qre4lt" path="res://Scripts/Statemachine Scripts/Player States/moveState.gd" id="4_l18q3"]
+[ext_resource type="SpriteFrames" uid="uid://rd6bxeb0jw1h" path="res://Resources/Animations/player_animations.tres" id="4_tb0jd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4pfd"]
 size = Vector2(25, 26)
@@ -13,7 +15,14 @@ size = Vector2(25, 26)
 motion_mode = 1
 script = ExtResource("1_2xyk0")
 
+[node name="healthBar" parent="." instance=ExtResource("2_tb0jd")]
+offset_left = -17.0
+offset_top = -24.0
+offset_right = 17.0
+offset_bottom = -20.0
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_d4pfd")
 
@@ -26,6 +35,13 @@ one_shot = true
 scale = Vector2(1.3, 1.3)
 shape = SubResource("RectangleShape2D_d4pfd")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("4_tb0jd")
+animation = &"idle_placeholder"
+autoplay = "idle_placeholder"
+frame = 3
+frame_progress = 0.689044
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_hpckh")
 starting_state = NodePath("Idle")
@@ -33,10 +49,12 @@ starting_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("moveState")]
 script = ExtResource("3_2xyk0")
 moveState = NodePath("../Move")
+animation_name = "idle_placeholder"
 
 [node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idleState")]
 script = ExtResource("4_l18q3")
 idleState = NodePath("../Idle")
 moveSpeed = 300.0
+animation_name = "walk_placeholder"
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

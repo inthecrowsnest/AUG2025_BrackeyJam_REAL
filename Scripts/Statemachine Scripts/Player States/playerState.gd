@@ -5,7 +5,7 @@ class_name PlayerState extends State
 var parent: Player
 
 func enter():
-	#parent.animations.play(animation_name)
+	parent.animations.play(animation_name)
 	pass
 	
 func exit():
