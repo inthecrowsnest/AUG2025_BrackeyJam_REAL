@@ -1,13 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba16umy1uhhiv"]
+[gd_scene load_steps=4 format=3 uid="uid://ba16umy1uhhiv"]
 
 [ext_resource type="PackedScene" uid="uid://dmgpwevcu7iit" path="res://Scenes/enemy_1.tscn" id="1_dpxgf"]
 [ext_resource type="PackedScene" uid="uid://cwtldahhr7403" path="res://Scenes/CharacterComponents/Player.tscn" id="2_u7mkh"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dpxgf"]
+vertices = PackedVector2Array(271.867, -90.4297, 210.273, 394.617, -57.3281, 142.773, -81.8516, 82.4922, -493, 404.156, -493, -91.4531)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 4, 5, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-498, -99, -498, 413, -58, 149, 214, 405, 278, -99, -82, 77)])
+agent_radius = 5.0
+
 [node name="Enemy Test Scene" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_u7mkh")]
-position = Vector2(618, 163)
+position = Vector2(824, 144)
 
-[node name="Enemy1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_dpxgf")]
+[node name="Enemy1" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("1_dpxgf")]
 position = Vector2(144, 134)
-player = NodePath("../CharacterBody2D")
+goal = NodePath("../CharacterBody2D")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(618, 163)
+navigation_polygon = SubResource("NavigationPolygon_dpxgf")

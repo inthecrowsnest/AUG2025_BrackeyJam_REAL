@@ -19,26 +19,44 @@ texture = ExtResource("1_jwqgc")
 shape = SubResource("CircleShape2D_jwqgc")
 
 [node name="0" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(0, -50)
 
 [node name="1" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(50, -50)
 
 [node name="2" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(50, 0)
 
 [node name="3" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(50, 50)
 
 [node name="4" type="RayCast2D" parent="."]
+visible = false
 
 [node name="5" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(-50, 50)
 
 [node name="6" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(-50, 0)
 
 [node name="7" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(-50, -50)
 
-[node name="NavigationLink2D" type="NavigationLink2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 3.0
+target_desired_distance = 3.0
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
