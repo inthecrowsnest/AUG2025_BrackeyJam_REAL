@@ -1,45 +1,20 @@
-extends CharacterBody2D
+class_name Enemy extends CharacterBody2D
 
-#@export var player: Node2D
-
-#var direction = [Vector2(0, -1), Vector2(1, -1), Vector2(1, 0), Vector2(1, 1), Vector2(0, 1), Vector2(-1, 1), Vector2(-1, 0), Vector2(-1, -1)]
-var desired_vel = 0
-var max_steer_force = 10
-
-var speed = 10000
-
-var target_found = false
-
-@export var goal: Node = null
+@onready var state_machine = $StateMachine
+@onready var animator = $AnimationPlayer
+@onready var sprite = $Sprite
 
 func _ready() -> void:
-	$NavigationAgent2D.target_position = goal.global_position
-	$Timer.start()
+	# Initialize the state machine, passing a reference of the player to the states,
+	# that way they can move and react accordingly
+	state_machine.init(self)
+
+func _unhandled_input(event: InputEvent) -> void:
+	state_machine.process_input(event)
 
 func _physics_process(delta: float) -> void:
-	if !$NavigationAgent2D.is_target_reached():
-		var next_path_position = $NavigationAgent2D.get_next_path_position()
-		var nav_point_direction = to_local(next_path_position).normalized()
-		if !target_found:
-			velocity = nav_point_direction * speed * delta
-		else:
-			velocity = Vector2.ZERO
-		#seek(next_path_position)
-		move_and_slide()
+	state_machine.process_physics(delta)
+	move_and_slide()
 
-
-func _on_timer_timeout() -> void:
-	if $NavigationAgent2D.target_position != goal.global_position:
-		$NavigationAgent2D.target_position = goal.global_position
-	$Timer.start()
-
-
-func seek(target: Vector2) -> void:
-	var direction = ($NavigationAgent2D.target_position - global_position).normalized()
-	rotation = direction.angle()
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	
-	target_found = true
-	
+func _process(delta: float) -> void:
+	state_machine.process_frame(delta)
