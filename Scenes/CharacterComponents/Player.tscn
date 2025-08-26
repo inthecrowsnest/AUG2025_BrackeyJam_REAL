@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dm44txshdulyl"]
+[gd_scene load_steps=11 format=3 uid="uid://dm44txshdulyl"]
 
 [ext_resource type="Script" uid="uid://bkmt5u0efj8e" path="res://Scripts/playerController.gd" id="1_2xyk0"]
 [ext_resource type="PackedScene" uid="uid://c6qnvbpklxjtg" path="res://healthBar.tscn" id="2_tb0jd"]
 [ext_resource type="Script" uid="uid://bve5k6rqag58x" path="res://Scripts/Statemachine Scripts/Player States/idleState.gd" id="3_2xyk0"]
 [ext_resource type="Script" uid="uid://7stqwqg0r7qk" path="res://Scripts/Statemachine Scripts/stateMachine.gd" id="3_hpckh"]
+[ext_resource type="Script" uid="uid://diju4ii5s32e" path="res://Scripts/playerHurtBox.gd" id="3_tb0jd"]
 [ext_resource type="Script" uid="uid://dj8tm21qre4lt" path="res://Scripts/Statemachine Scripts/Player States/moveState.gd" id="4_l18q3"]
 [ext_resource type="SpriteFrames" uid="uid://rd6bxeb0jw1h" path="res://Resources/Animations/player_animations.tres" id="4_tb0jd"]
+[ext_resource type="Script" uid="uid://djxeh65d7k4l0" path="res://Scripts/Statemachine Scripts/Player States/hurtState.gd" id="8_jx437"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4pfd"]
 size = Vector2(18.4615, 35.3846)
@@ -18,12 +20,14 @@ motion_mode = 1
 script = ExtResource("1_2xyk0")
 
 [node name="healthBar" parent="." instance=ExtResource("2_tb0jd")]
+visible = false
 offset_left = -17.0
 offset_top = -24.0
 offset_right = 17.0
 offset_bottom = -20.0
 
 [node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("3_tb0jd")
 
 [node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-3, 9)
@@ -37,10 +41,9 @@ shape = SubResource("RectangleShape2D_tb0jd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("4_tb0jd")
-animation = &"idle_placeholder"
+animation = &"hurt_placeholder"
 autoplay = "idle_placeholder"
-frame = 3
-frame_progress = 0.689044
+frame_progress = 0.567543
 
 [node name="DashTimer" type="Timer" parent="."]
 process_callback = 0
@@ -61,5 +64,10 @@ script = ExtResource("4_l18q3")
 idleState = NodePath("../Idle")
 moveSpeed = 300.0
 animation_name = "walk_placeholder"
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("8_jx437")
+knockback_force = 60.0
+animation_name = "hurt_placeholder"
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
