@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba16umy1uhhiv"]
+
+[ext_resource type="PackedScene" uid="uid://dmgpwevcu7iit" path="res://Scenes/enemy_1.tscn" id="1_dpxgf"]
+[ext_resource type="PackedScene" uid="uid://cwtldahhr7403" path="res://Scenes/CharacterComponents/Player.tscn" id="2_u7mkh"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dpxgf"]
+vertices = PackedVector2Array(272.531, -95.6563, 209.469, 400.969, -106.148, 479.883, -493, 408.828, -493, -95.2813, -74.1406, -221.719)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-498, -99, -498, 413, -106, 485, 214, 405, 278, -99, -74, -227)])
+agent_radius = 5.0
+
+[node name="Enemy Test Scene" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_u7mkh")]
+position = Vector2(824, 144)
+
+[node name="Enemy1" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("1_dpxgf")]
+position = Vector2(144, 134)
+goal = NodePath("../CharacterBody2D")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(618, 163)
+navigation_polygon = SubResource("NavigationPolygon_dpxgf")
