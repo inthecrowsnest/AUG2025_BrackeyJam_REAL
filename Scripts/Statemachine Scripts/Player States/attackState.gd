@@ -1,26 +1,29 @@
 extends PlayerState
 
 @onready var moveState = $"../Move"
-@onready var attackState = $"../Attack"
+@onready var idleState = $"../Idle"
+
+var is_anim_finished: bool
 
 func enter():
 	super()
 	parent.velocity = Vector2.ZERO
+	is_anim_finished = false
+	parent.animator.connect("animation_finished", func(_anim): is_anim_finished = true)
 	
 func exit():
 	super()
 
 func process_input(event) -> State:
 	super(event)
-	if event.is_action_pressed("attack"):
-		return attackState
-	
 	return null
 	
 func process_frame(delta: float) -> State:
 	super(delta)
-	if Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
+	if is_anim_finished and Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
 		return moveState
+	elif is_anim_finished:
+		return idleState
 	
 	return null
 

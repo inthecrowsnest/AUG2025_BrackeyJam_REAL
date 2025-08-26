@@ -1,6 +1,6 @@
 extends PlayerState
 
-@onready var hurt_box: Area2D = $"../../HurtBox"
+@onready var hurt_box: Area2D = $HurtBox
 @onready var moveState = $"../Move"
 @onready var idleState = $"../Idle"
 
@@ -10,9 +10,8 @@ var is_anim_finished: bool
 
 func enter():
 	super()
-	parent.velocity = Vector2.ZERO
 	is_anim_finished = false
-	parent.animations.connect("animation_finished", func(): is_anim_finished = true)
+	parent.animator.connect("animation_finished", func(_anim): is_anim_finished = true)
 	knock_back()
 	
 func exit():
@@ -20,14 +19,16 @@ func exit():
 
 func process_input(event) -> State:
 	super(event)
-	if is_anim_finished and event.is_action_pressed("move"):
-		return moveState
 	return null
 	
 func process_frame(delta: float) -> State:
 	super(delta)
-	if is_anim_finished:
+	
+	if is_anim_finished and Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
+		return moveState
+	elif is_anim_finished:
 		return idleState
+	
 	return null
 
 func process_physics(delta:float) -> State:

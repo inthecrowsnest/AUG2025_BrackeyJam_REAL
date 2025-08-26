@@ -1,4 +1,4 @@
-class_name StateMachine extends Node
+class_name StateMachine extends Node2D
 
 @export 
 var starting_state: State

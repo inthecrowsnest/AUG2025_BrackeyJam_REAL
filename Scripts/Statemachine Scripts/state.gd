@@ -1,4 +1,4 @@
-class_name State extends Node
+class_name State extends Node2D
 
 func enter():
 	pass

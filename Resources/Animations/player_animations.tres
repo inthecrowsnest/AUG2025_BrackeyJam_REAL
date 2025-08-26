@@ -1,9 +1,12 @@
-[gd_resource type="SpriteFrames" load_steps=17 format=3 uid="uid://rd6bxeb0jw1h"]
+[gd_resource type="SpriteFrames" load_steps=20 format=3 uid="uid://rd6bxeb0jw1h"]
 
+[ext_resource type="Texture2D" uid="uid://dyhlpm50iud0p" path="res://Sprites/attack_placeholder/punch1.png" id="1_d4eaq"]
 [ext_resource type="Texture2D" uid="uid://bmwx4gsepynn1" path="res://Sprites/hurt_placeholder/hurt1.png" id="1_g3hu0"]
 [ext_resource type="Texture2D" uid="uid://btn2ylin7vrvc" path="res://Sprites/idle_placeholder/idle1.png" id="1_tcq4c"]
+[ext_resource type="Texture2D" uid="uid://bs5slml4u5we4" path="res://Sprites/attack_placeholder/punch2.png" id="2_djbuc"]
 [ext_resource type="Texture2D" uid="uid://7eysah2dbiv5" path="res://Sprites/hurt_placeholder/hurt2.png" id="2_f8vwh"]
 [ext_resource type="Texture2D" uid="uid://dhn7phscu7bst" path="res://Sprites/idle_placeholder/idle2.png" id="2_vqhit"]
+[ext_resource type="Texture2D" uid="uid://gmrjdx3ryiyu" path="res://Sprites/attack_placeholder/punch3.png" id="3_210nr"]
 [ext_resource type="Texture2D" uid="uid://bnh48a86ysj3a" path="res://Sprites/idle_placeholder/idle3.png" id="3_g3hu0"]
 [ext_resource type="Texture2D" uid="uid://dn7gm81oymiyq" path="res://Sprites/idle_placeholder/idle4.png" id="4_f8vwh"]
 [ext_resource type="Texture2D" uid="uid://cfhvkxv16pvig" path="res://Sprites/walk_placeholder/walk1.png" id="5_2b1yw"]
@@ -19,6 +22,20 @@
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d4eaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_djbuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_210nr")
+}],
+"loop": true,
+"name": &"attack_placeholder",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_g3hu0")

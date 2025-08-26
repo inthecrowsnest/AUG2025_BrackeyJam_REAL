@@ -1,10 +1,8 @@
 class_name Player extends CharacterBody2D
 
-# The line below isn't ready yet 
-# @onready var animations = $animations
-
 @onready var state_machine = $StateMachine
-@onready var animations = $AnimatedSprite2D
+@onready var animator = $AnimationPlayer
+@onready var sprite = $Sprite
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
