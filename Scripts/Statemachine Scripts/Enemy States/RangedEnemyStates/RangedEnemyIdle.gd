@@ -1,11 +1,27 @@
-extends Node2D
+extends EnemyState
 
+@onready var chaseState = $"../Chasing"
+@onready var attackState = $"../Attacking"
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func enter():
+	super()
+	parent.velocity = Vector2.ZERO
 
+func exit():
+	super()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func process_input(event) -> State:
+	super(event)
+	
+	return null
+	
+func process_frame(delta: float) -> State:
+	super(delta)
+	if parent.velocity != Vector2.ZERO:
+		return chaseState
+	
+	return null
+
+func process_physics(delta:float) -> State:
+	super(delta)
+	return null

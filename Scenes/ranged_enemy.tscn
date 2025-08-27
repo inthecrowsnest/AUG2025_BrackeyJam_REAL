@@ -34,6 +34,7 @@ one_shot = true
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 3.0
 target_desired_distance = 3.0
+debug_enabled = true
 
 [node name="attack range" type="Area2D" parent="."]
 collision_layer = 4
@@ -65,7 +66,10 @@ script = ExtResource("6_xg1bg")
 [node name="Idle" type="Node2D" parent="StateMachine"]
 script = ExtResource("7_s86nv")
 
+[node name="ShootTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="attack range" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="attack range" to="." method="_on_attack_range_body_exited"]
-[connection signal="body_entered" from="flee Range" to="." method="_on_flee_range_body_entered"]
+[connection signal="body_entered" from="attack range" to="StateMachine/Chasing" method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="attack range" to="StateMachine/Chasing" method="_on_attack_range_body_exited"]
+[connection signal="body_entered" from="flee Range" to="StateMachine/Chasing" method="_on_flee_range_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="StateMachine/Attacking" method="_on_shoot_timer_timeout"]

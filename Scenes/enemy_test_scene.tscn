@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://dm44txshdulyl" path="res://Scenes/CharacterComponents/Player.tscn" id="2_u7mkh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dpxgf"]
-vertices = PackedVector2Array(-73.7891, 98.5781, 271.797, -89.9219, 209.922, 397.367, -89.75, 247.531, -493, 405.672, -493, -91.25)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 0, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-498, -99, -498, 413, -90, 253, 214, 405, 278, -99, -74, 93)])
+vertices = PackedVector2Array(272.438, -94.9688, 209.469, 400.969, -106.148, 479.883, -493, 408.828, -493, -94.8125, -98.0234, -165.906)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-498, -99, -498, 413, -106, 485, 214, 405, 278, -99, -98, -171)])
 agent_radius = 5.0
 
 [node name="Enemy Test Scene" type="Node2D"]
