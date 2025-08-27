@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0f7f0wcg8fqh"]
+[gd_scene load_steps=6 format=3 uid="uid://b0f7f0wcg8fqh"]
 
 [ext_resource type="PackedScene" uid="uid://dm44txshdulyl" path="res://Scenes/CharacterComponents/Player.tscn" id="1_r150o"]
 [ext_resource type="Script" uid="uid://bu5t2w41wwsl4" path="res://Scripts/hurtBox.gd" id="2_kln2b"]
@@ -6,7 +6,14 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idj7w"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_rgh2o"]
+vertices = PackedVector2Array(184.797, 90.7969, -172.789, 91.7891, -169.797, -103.797, 186.789, -104.789)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-170, -104, 187, -105, 185, 91, -173, 92)])
+agent_radius = 0.2
+
 [node name="Main" type="Node2D"]
+metadata/_edit_vertical_guides_ = [-209.0]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_r150o")]
 
@@ -25,3 +32,8 @@ shape = SubResource("RectangleShape2D_idj7w")
 [node name="Sprite2D" type="Sprite2D" parent="hurtbox"]
 scale = Vector2(0.155, 0.155)
 texture = ExtResource("3_kln2b")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+position = Vector2(-1, 1)
+navigation_polygon = SubResource("NavigationPolygon_rgh2o")
