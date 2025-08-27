@@ -9,7 +9,7 @@ func enter():
 	super()
 	parent.velocity = Vector2.ZERO
 	is_anim_finished = false
-	parent.animator.connect("animation_finished", func(_anim): is_anim_finished = true)
+	parent.anim_tree.animation_finished.connect(func(_anim): is_anim_finished = true)
 	
 func exit():
 	super()

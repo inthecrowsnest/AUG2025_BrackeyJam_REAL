@@ -2,7 +2,10 @@ class_name Player extends CharacterBody2D
 
 @onready var state_machine = $StateMachine
 @onready var animator = $AnimationPlayer
+@onready var anim_tree = $AnimationTree
 @onready var sprite = $Sprite
+
+var facingDirection: Vector2 = Vector2(0, 1.0)
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,

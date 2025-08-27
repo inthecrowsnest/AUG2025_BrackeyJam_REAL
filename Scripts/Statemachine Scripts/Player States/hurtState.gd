@@ -38,4 +38,3 @@ func process_physics(delta:float) -> State:
 func knock_back() -> void:
 	var push_direction = parent.global_position - hurt_box.hit_source.global_position
 	parent.velocity = push_direction.normalized() * knockback_force
-	

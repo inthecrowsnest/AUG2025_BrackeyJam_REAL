@@ -4,9 +4,10 @@ class_name PlayerState extends State
 
 var parent: Player
 
+
 func enter():
-	parent.animator.play(animation_name)
-	pass
+	parent.anim_tree.get("parameters/playback").travel(animation_name)
+	parent.anim_tree.set("parameters/" + animation_name+ "/blend_position", parent.facingDirection)
 	
 func exit():
 	pass

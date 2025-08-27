@@ -5,7 +5,8 @@ class_name PlayerHurtBox extends HurtBox
 var hit_source: Node2D
 
 func _ready() -> void:
-	super()
+	#super()
+	collision_mask = 3
 	
 func on_area_entered(hit_box: HitBox) -> void:
 	super(hit_box)
