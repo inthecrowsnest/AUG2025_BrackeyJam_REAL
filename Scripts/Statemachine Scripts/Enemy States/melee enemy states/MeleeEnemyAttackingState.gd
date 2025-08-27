@@ -1,6 +1,6 @@
-extends PlayerState
+extends EnemyState
 
-@onready var moveState = $"../Move"
+@onready var chasingState = $"../Chasing"
 @onready var idleState = $"../Idle"
 
 var is_anim_finished: bool
@@ -9,7 +9,7 @@ func enter():
 	super()
 	parent.velocity = Vector2.ZERO
 	is_anim_finished = false
-	parent.anim_tree.animation_finished.connect(func(_anim): is_anim_finished = true)
+	parent.animator.connect("animation_finished", func(_anim): is_anim_finished = true)
 	
 func exit():
 	super()
@@ -20,8 +20,8 @@ func process_input(event) -> State:
 	
 func process_frame(delta: float) -> State:
 	super(delta)
-	if is_anim_finished and Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
-		return moveState
+	if is_anim_finished and parent.velocity != Vector2.ZERO:
+		return chasingState
 	elif is_anim_finished:
 		return idleState
 	

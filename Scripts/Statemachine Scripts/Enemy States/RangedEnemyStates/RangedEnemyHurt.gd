@@ -1,7 +1,7 @@
-extends PlayerState
+extends EnemyState
 
 @onready var hurt_box: Area2D = $HurtBox
-@onready var moveState = $"../Move"
+@onready var chaseState = $"../Chasing"
 @onready var idleState = $"../Idle"
 
 @export var knockback_force: float
@@ -24,8 +24,8 @@ func process_input(event) -> State:
 func process_frame(delta: float) -> State:
 	super(delta)
 	
-	if is_anim_finished and Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
-		return moveState
+	if is_anim_finished and parent.velocity != Vector2.ZERO:
+		return chaseState
 	elif is_anim_finished:
 		return idleState
 	

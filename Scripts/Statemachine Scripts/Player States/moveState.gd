@@ -27,10 +27,11 @@ func process_frame(delta: float) -> State:
 	super(delta)
 	input_direction = Input.get_vector("left", "right", "up", "down")
 	
-	_check_if_should_flip(round(input_direction.x))
-	
 	if input_direction == Vector2.ZERO:
 		return idleState
+	
+	_change_directions(Vector2(round(input_direction.x), round(input_direction.y)))
+	#_change_directions(input_direction)
 		
 	return null
 
@@ -44,6 +45,4 @@ func _check_if_should_flip(new_dir: int) -> void:
 		parent.sprite.flip_h = false
 	if new_dir < 0:
 		parent.sprite.flip_h = true
-		
-
 		
