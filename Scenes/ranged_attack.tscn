@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b531vv0aot70t"]
+
+[ext_resource type="Script" uid="uid://cw615c8fu4bbe" path="res://Scripts/ranged_attack.gd" id="1_75kti"]
+[ext_resource type="Texture2D" uid="uid://cxmfcom4px13c" path="res://icon.svg" id="1_fca70"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75kti"]
+size = Vector2(14, 4)
+
+[node name="Ranged Attack" type="CharacterBody2D"]
+script = ExtResource("1_75kti")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, -1.42109e-14)
+scale = Vector2(0.117187, 0.03125)
+texture = ExtResource("1_fca70")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_75kti")

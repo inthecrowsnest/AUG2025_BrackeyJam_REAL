@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ryyr1lkbr6e8" path="res://Scripts/enemy_1.gd" id="1_0a874"]
 [ext_resource type="Script" uid="uid://7stqwqg0r7qk" path="res://Scripts/Statemachine Scripts/stateMachine.gd" id="2_ya6xy"]
-[ext_resource type="Script" uid="uid://7qj168s61xxe" path="res://Scripts/Statemachine Scripts/Enemy States/EnemyChasingState.gd" id="4_v73nf"]
+[ext_resource type="Script" uid="uid://7qj168s61xxe" path="res://Scripts/Statemachine Scripts/Enemy States/melee enemy states/MeleeEnemyChasingState.gd" id="4_v73nf"]
 [ext_resource type="Script" uid="uid://dhp7m8cfed0ku" path="res://Scripts/hitBox.gd" id="5_y27sj"]
-[ext_resource type="Script" uid="uid://b1trbq0bgxdgh" path="res://Scripts/Statemachine Scripts/Enemy States/EnemyAttackingState.gd" id="5_ya6xy"]
-[ext_resource type="Script" uid="uid://ckwgr1u654kx0" path="res://Scripts/Statemachine Scripts/Enemy States/EnemyIdleState.gd" id="6_arec4"]
-[ext_resource type="Script" uid="uid://but477so8ghwm" path="res://Scripts/Statemachine Scripts/Enemy States/EnemyHurtState.gd" id="6_y27sj"]
+[ext_resource type="Script" uid="uid://b1trbq0bgxdgh" path="res://Scripts/Statemachine Scripts/Enemy States/melee enemy states/MeleeEnemyAttackingState.gd" id="5_ya6xy"]
+[ext_resource type="Script" uid="uid://ckwgr1u654kx0" path="res://Scripts/Statemachine Scripts/Enemy States/melee enemy states/MeleeEnemyIdleState.gd" id="6_arec4"]
+[ext_resource type="Script" uid="uid://but477so8ghwm" path="res://Scripts/Statemachine Scripts/Enemy States/melee enemy states/MeleeEnemyHurtState.gd" id="6_y27sj"]
 [ext_resource type="Script" uid="uid://bu5t2w41wwsl4" path="res://Scripts/hurtBox.gd" id="7_imqlt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jwqgc"]
