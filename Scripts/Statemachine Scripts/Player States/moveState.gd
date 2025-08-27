@@ -2,6 +2,7 @@ extends PlayerState
 
 @onready var idleState = $"../Idle"
 @onready var attackState = $"../Attack"
+@onready var dashState = $"../Dash"
 @export var moveSpeed: float
 
 var input_direction: Vector2
@@ -17,6 +18,8 @@ func process_input(event) -> State:
 	
 	if event.is_action_pressed("attack"):
 		return attackState
+	elif event.is_action_pressed("dash"):
+		return dashState
 	
 	return null
 	
@@ -41,4 +44,6 @@ func _check_if_should_flip(new_dir: int) -> void:
 		parent.sprite.flip_h = false
 	if new_dir < 0:
 		parent.sprite.flip_h = true
-	
+		
+
+		
