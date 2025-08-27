@@ -4,6 +4,9 @@ class_name Player extends CharacterBody2D
 @onready var animator = $AnimationPlayer
 @onready var anim_tree = $AnimationTree
 @onready var sprite = $Sprite
+@onready var healthBar = $healthBar
+
+var health: int = 10
 
 var facingDirection: Vector2 = Vector2(0, 1.0)
 
@@ -18,6 +21,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 	move_and_slide()
+	healthBar.value = health
+	
+	if health <= 0:
+		die()
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
+	
+func die():
+	get_tree().reload_current_scene()

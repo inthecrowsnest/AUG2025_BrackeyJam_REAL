@@ -1,4 +1,6 @@
-[gd_scene load_steps=56 format=3 uid="uid://dm44txshdulyl"]
+
+[gd_scene load_steps=21 format=3 uid="uid://dm44txshdulyl"]
+
 
 [ext_resource type="Script" uid="uid://bkmt5u0efj8e" path="res://Scripts/playerController.gd" id="1_2xyk0"]
 [ext_resource type="PackedScene" uid="uid://c6qnvbpklxjtg" path="res://healthBar.tscn" id="2_tb0jd"]
@@ -7,6 +9,7 @@
 [ext_resource type="Script" uid="uid://diju4ii5s32e" path="res://Scripts/playerHurtBox.gd" id="3_tb0jd"]
 [ext_resource type="Script" uid="uid://dj8tm21qre4lt" path="res://Scripts/Statemachine Scripts/Player States/moveState.gd" id="4_l18q3"]
 [ext_resource type="SpriteFrames" uid="uid://rd6bxeb0jw1h" path="res://Resources/Animations/player_animations.tres" id="4_tb0jd"]
+[ext_resource type="Script" uid="uid://cdreag2akwyim" path="res://Scripts/Statemachine Scripts/Player States/dashState.gd" id="7_6rvqv"]
 [ext_resource type="Script" uid="uid://djxeh65d7k4l0" path="res://Scripts/Statemachine Scripts/Player States/hurtState.gd" id="8_jx437"]
 [ext_resource type="Script" uid="uid://frqjommia6w8" path="res://Scripts/Statemachine Scripts/Player States/attackState.gd" id="9_286s1"]
 [ext_resource type="Script" uid="uid://dhp7m8cfed0ku" path="res://Scripts/hitBox.gd" id="10_6lcke"]
@@ -859,9 +862,12 @@ parameters/walk/blend_position = Vector2(0.145817, -0.955157)
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_tb0jd")
 
-[node name="DashTimer" type="Timer" parent="."]
-process_callback = 0
+[node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
+one_shot = true
+
+[node name="DelayTimer" type="Timer" parent="."]
+wait_time = 5.0
 one_shot = true
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("starting_state")]
@@ -876,6 +882,9 @@ animation_name = "idle"
 script = ExtResource("4_l18q3")
 moveSpeed = 150.0
 animation_name = "walk"
+
+[node name="Dash" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_6rvqv")
 
 [node name="Hurt" type="Node2D" parent="StateMachine"]
 script = ExtResource("8_jx437")
@@ -907,4 +916,11 @@ shape = SubResource("RectangleShape2D_jx437")
 disabled = true
 debug_color = Color(0.809228, 0.412772, 0, 0.42)
 
-[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[node name="healthBar2" parent="." instance=ExtResource("2_tb0jd")]
+offset_left = -11.0
+offset_top = -19.0
+offset_right = 10.0
+offset_bottom = -16.0
+
+[connection signal="timeout" from="Timer" to="StateMachine/Dash" method="_on_timer_timeout"]
+[connection signal="timeout" from="DelayTimer" to="StateMachine/Dash" method="_on_delay_timer_timeout"]
