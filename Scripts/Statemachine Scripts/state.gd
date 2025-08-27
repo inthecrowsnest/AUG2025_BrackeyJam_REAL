@@ -1,16 +1,16 @@
-class_name State extends Object
-
-# true whenever this state is currently being exited, false if not
-var isExiting: bool
+class_name State extends Node2D
 
 func enter():
 	pass
 	
 func exit():
-	isExiting = true
-	
-func process():
 	pass
+
+func process_input(event) -> State:
+	return null
 	
-func physics_process():
-	pass
+func process_frame(delta: float) -> State:
+	return null
+
+func process_physics(delta:float) -> State:
+	return null

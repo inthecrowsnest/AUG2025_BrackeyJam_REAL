@@ -1,11 +1,8 @@
-class_name PlayerState extends State
+class_name EnemyState extends State
 
-@export var animation_name: String
-
-var parent: Player
+var parent: Enemy
 
 func enter():
-	parent.animator.play(animation_name)
 	pass
 	
 func exit():

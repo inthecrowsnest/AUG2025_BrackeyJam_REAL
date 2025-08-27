@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0f7f0wcg8fqh"]
+
+[ext_resource type="PackedScene" uid="uid://dm44txshdulyl" path="res://Scenes/CharacterComponents/Player.tscn" id="1_r150o"]
+[ext_resource type="Script" uid="uid://bu5t2w41wwsl4" path="res://Scripts/hurtBox.gd" id="2_kln2b"]
+[ext_resource type="Texture2D" uid="uid://cxmfcom4px13c" path="res://icon.svg" id="3_kln2b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idj7w"]
+
+[node name="Main" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_r150o")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="hurtbox" type="Area2D" parent="."]
+position = Vector2(120, 0)
+scale = Vector2(3.515, 3.515)
+script = ExtResource("2_kln2b")
+metadata/_custom_type_script = "uid://bu5t2w41wwsl4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource("RectangleShape2D_idj7w")
+
+[node name="Sprite2D" type="Sprite2D" parent="hurtbox"]
+scale = Vector2(0.155, 0.155)
+texture = ExtResource("3_kln2b")

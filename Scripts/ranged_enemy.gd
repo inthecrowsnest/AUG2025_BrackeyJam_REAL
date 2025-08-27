@@ -1,4 +1,4 @@
-class_name Player extends CharacterBody2D
+class_name RangedEnemy extends CharacterBody2D
 
 @onready var state_machine = $StateMachine
 @onready var animator = $AnimationPlayer

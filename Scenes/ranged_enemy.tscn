@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://jq5vqntqij1j"]
+
+[ext_resource type="Script" uid="uid://dgrvmjcif4pmh" path="res://Scripts/ranged_enemy.gd" id="1_5x7gc"]
+[ext_resource type="Texture2D" uid="uid://cxmfcom4px13c" path="res://icon.svg" id="1_msnv5"]
+[ext_resource type="Script" uid="uid://7stqwqg0r7qk" path="res://Scripts/Statemachine Scripts/stateMachine.gd" id="3_lcaim"]
+[ext_resource type="Script" uid="uid://cnioph3ac7vbt" path="res://Scripts/Statemachine Scripts/Enemy States/RangedEnemyStates/RangedEnemyChasing.gd" id="4_pbmq5"]
+[ext_resource type="Script" uid="uid://d3wsdvkia4y4v" path="res://Scripts/Statemachine Scripts/Enemy States/RangedEnemyStates/RangedEnemyAttacking.gd" id="5_kybcg"]
+[ext_resource type="Script" uid="uid://byt0x8hmyuxe0" path="res://Scripts/Statemachine Scripts/Enemy States/RangedEnemyStates/RangedEnemyHurt.gd" id="6_xg1bg"]
+[ext_resource type="Script" uid="uid://ccmj0fgjx2vo3" path="res://Scripts/Statemachine Scripts/Enemy States/RangedEnemyStates/RangedEnemyIdle.gd" id="7_s86nv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5x7gc"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nqq2h"]
+radius = 274.987
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1qm41"]
+radius = 119.004
+
+[node name="Ranged Enemy" type="CharacterBody2D"]
+script = ExtResource("1_5x7gc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_msnv5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5x7gc")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 3.0
+target_desired_distance = 3.0
+debug_enabled = true
+
+[node name="attack range" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack range"]
+shape = SubResource("CircleShape2D_nqq2h")
+
+[node name="flee Range" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flee Range"]
+shape = SubResource("CircleShape2D_1qm41")
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("3_lcaim")
+metadata/_custom_type_script = "uid://7stqwqg0r7qk"
+
+[node name="Chasing" type="Node2D" parent="StateMachine"]
+script = ExtResource("4_pbmq5")
+
+[node name="Attacking" type="Node2D" parent="StateMachine"]
+script = ExtResource("5_kybcg")
+
+[node name="Hurt" type="Node2D" parent="StateMachine"]
+script = ExtResource("6_xg1bg")
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_s86nv")
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="attack range" to="StateMachine/Chasing" method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="attack range" to="StateMachine/Chasing" method="_on_attack_range_body_exited"]
+[connection signal="body_entered" from="flee Range" to="StateMachine/Chasing" method="_on_flee_range_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="StateMachine/Attacking" method="_on_shoot_timer_timeout"]

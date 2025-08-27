@@ -7,10 +7,22 @@ extends CharacterBody2D
 
 var dashing: bool = false
 
+#sportmad12
+var health: int = 10
+
+@onready var healthBar  = $healthBar
+#sportmad12
 
 func _physics_process(delta: float) -> void:
 	get_input()
 	move_and_slide()
+	
+	#sportmad12
+	healthBar.value = health
+	
+	if health <= 0:
+		die()
+	#sportmad12
 	
 	if Input.is_action_just_pressed("dash") and not dashing:
 		timer_start()
@@ -28,3 +40,8 @@ func timer_start() -> void:
 func _on_dash_timer_timeout() -> void:
 	dashing = false
 	speed = speed / dashFactor
+	
+#sportmad12
+func die():
+	get_tree().reload_current_scene()
+#sportmad12
