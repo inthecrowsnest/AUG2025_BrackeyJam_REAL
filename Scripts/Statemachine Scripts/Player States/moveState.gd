@@ -30,9 +30,9 @@ func process_frame(delta: float) -> State:
 	if input_direction == Vector2.ZERO:
 		return idleState
 	
-	_change_directions(Vector2(round(input_direction.x), round(input_direction.y)))
-	#_change_directions(input_direction)
-		
+	_check_if_should_flip(input_direction.y)
+	
+	
 	return null
 
 func process_physics(delta:float) -> State:

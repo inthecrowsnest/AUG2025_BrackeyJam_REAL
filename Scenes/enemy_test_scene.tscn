@@ -18,6 +18,5 @@ position = Vector2(824, 144)
 position = Vector2(618, 163)
 navigation_polygon = SubResource("NavigationPolygon_dpxgf")
 
-[node name="Ranged Enemy" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("2_dpxgf")]
+[node name="Ranged Enemy" parent="." instance=ExtResource("2_dpxgf")]
 position = Vector2(280, 200)
-goal = NodePath("../CharacterBody2D")
