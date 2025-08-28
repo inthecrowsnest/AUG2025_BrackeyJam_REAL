@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0f7f0wcg8fqh"]
+[gd_scene load_steps=7 format=3 uid="uid://b0f7f0wcg8fqh"]
 
 [ext_resource type="PackedScene" uid="uid://dm44txshdulyl" path="res://Scenes/CharacterComponents/Player.tscn" id="1_r150o"]
 [ext_resource type="Script" uid="uid://bu5t2w41wwsl4" path="res://Scripts/hurtBox.gd" id="2_kln2b"]
 [ext_resource type="Texture2D" uid="uid://cxmfcom4px13c" path="res://icon.svg" id="3_kln2b"]
+[ext_resource type="PackedScene" uid="uid://0qmcafn57svd" path="res://Scenes/items.tscn" id="4_rgh2o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idj7w"]
 
@@ -37,3 +38,6 @@ texture = ExtResource("3_kln2b")
 visible = false
 position = Vector2(-1, 1)
 navigation_polygon = SubResource("NavigationPolygon_rgh2o")
+
+[node name="Items" parent="." instance=ExtResource("4_rgh2o")]
+position = Vector2(-124, -1)

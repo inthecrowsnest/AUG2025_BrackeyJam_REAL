@@ -6,7 +6,7 @@ class_name Player extends CharacterBody2D
 @onready var sprite = $Sprite
 @onready var healthBar = $healthBar
 
-var health: int = 10
+var health: int = 100
 
 var facingDirection: Vector2 = Vector2(0, 1.0)
 
