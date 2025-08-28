@@ -1,9 +1,13 @@
-class_name RangedEnemy extends CharacterBody2D
+class_name RangedEnemy extends EnemyController
 
 @onready var state_machine = $StateMachine
 @onready var animator = $AnimationPlayer
 @onready var sprite = $Sprite
 @onready var healthBar = $healthBar
+@export var goal: Node = null
+@onready var animation_tree = $AnimationTree
+
+var facingDirection = Vector2(0.0, 1.0)
 
 var health: int = 10
 

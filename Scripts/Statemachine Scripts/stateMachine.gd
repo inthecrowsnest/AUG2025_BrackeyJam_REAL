@@ -5,7 +5,7 @@ var starting_state: State
 
 var state: State
 
-func init(parent: Player):
+func init(parent: Controller):
 	for child in get_children():
 		child.parent = parent
 		

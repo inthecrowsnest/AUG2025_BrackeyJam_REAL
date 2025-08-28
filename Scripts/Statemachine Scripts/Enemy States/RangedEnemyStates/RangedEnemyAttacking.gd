@@ -6,7 +6,7 @@ var bullet_path = preload("res://Scenes/ranged_attack.tscn")
 @onready var idleState = $"../Idle"
 @onready var shoot_timer: Timer = $"../../ShootTimer"
 @onready var navigation_agent_2d: NavigationAgent2D = $"../../NavigationAgent2D"
-@export var goal: Node = null
+
 
 var shoot = false
 
@@ -16,10 +16,11 @@ func enter():
 	super()
 	parent.velocity = Vector2.ZERO
 	is_anim_finished = false
-	parent.animator.connect("animation_finished", func(_anim): is_anim_finished = true)
+	parent.animation_tree.connect("animation_finished", func(_anim): is_anim_finished = true)
 	
 func exit():
 	super()
+	fire()
 
 func process_input(event) -> State:
 	super(event)
@@ -30,10 +31,10 @@ func process_frame(delta: float) -> State:
 	if !shoot:
 		shoot=true
 		shoot_timer.start()
-	if is_anim_finished and parent.velocity != Vector2.ZERO:
+	if is_anim_finished:
 		return chasingState
-	elif is_anim_finished:
-		return idleState
+	#elif is_anim_finished:
+		#return idleState
 	
 	return null
 
@@ -47,9 +48,14 @@ func fire():
 	var bullet=bullet_path.instantiate()
 	bullet.dir=nav_point_direction
 	bullet.pos=$".".global_position
-	bullet.rota=goal.global_position
+	bullet.rota=parent.goal.global_position
 	get_parent().add_child(bullet)
+	_check_if_should_flip(nav_point_direction)
 
 func _on_shoot_timer_timeout() -> void:
 	shoot=true
 	fire()
+
+func _check_if_should_flip(new_dir: Vector2) -> void:	
+	parent.facingDirection = new_dir
+	parent.animation_tree.set("parameters/walk/blend_position", parent.facingDirection)
