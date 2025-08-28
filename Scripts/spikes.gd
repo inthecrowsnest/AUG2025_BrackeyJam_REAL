@@ -2,8 +2,8 @@ extends Node2D
 
 @export var animation: AnimatedSprite2D
 @export var timer: Timer
-
-var state: int = 0
+@export var timerBased: bool = true
+@export var state: int = 0
 
 # Called when the node enters the scene tree for the first time.
 
@@ -18,13 +18,20 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 #incremenet state
 func _on_timer_timeout() -> void:
 	print("timeout")
-	if state < 3:
+	if state < 2:
 		state += 1
-	elif state == 3:
+	elif state == 2:
 		state = 0
 
 # to prevent enemies dying b4 player enters
 func _on_player_enter(body: Node2D) -> void:
-	print("timer started")
-	timer.start()
+	if timerBased:
+		#print("timer started")
+		timer.start()
 	
+
+func _on_lever_switched(switchedOn: bool) -> void:
+	if state == 1:
+		state = 2
+	elif state == 2:
+		state = 1

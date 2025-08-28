@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://clrl5mgp3s4a"]
+[gd_scene load_steps=7 format=4 uid="uid://b4fs2u32hxqfw"]
 
-[ext_resource type="Script" uid="uid://r858t56wk2od" path="res://Scripts/room_clear.gd" id="1_t0w5m"]
-[ext_resource type="Texture2D" uid="uid://csi1822s8md57" path="res://Sprites/TileSets/MouseTileSeTWIP.png" id="2_x5ari"]
-[ext_resource type="PackedScene" uid="uid://ocw5iv1b4sts" path="res://Scenes/Rooms/RoomObjects/doorTeleport.tscn" id="3_d2vv5"]
+[ext_resource type="Script" uid="uid://r858t56wk2od" path="res://Scripts/room_clear.gd" id="1_qoqs6"]
+[ext_resource type="Texture2D" uid="uid://csi1822s8md57" path="res://Sprites/TileSets/MouseTileSeTWIP.png" id="2_dy2vy"]
+[ext_resource type="PackedScene" uid="uid://ocw5iv1b4sts" path="res://Scenes/Rooms/RoomObjects/doorTeleport.tscn" id="3_j6ekw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wlo85"]
-texture = ExtResource("2_x5ari")
+texture = ExtResource("2_dy2vy")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -91,7 +91,7 @@ sources/0 = SubResource("TileSetAtlasSource_wlo85")
 size = Vector2(462, 205)
 
 [node name="EnemyRoom1" type="Node2D" node_paths=PackedStringArray("doors", "camera")]
-script = ExtResource("1_t0w5m")
+script = ExtResource("1_qoqs6")
 doors = NodePath("Doors2")
 camera = NodePath("CamChangeArea2/Camera2D")
 
@@ -100,11 +100,11 @@ tile_map_data = PackedByteArray("AAD/////AAAEAAEAAAAAAP//AAAEAAEAAAAAAAAAAAAEAAE
 tile_set = SubResource("TileSet_sjqg6")
 
 [node name="Walls_Pits2" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD+//z/AAAHAAMAAAD///z/AAAIAAMAAAAAAPz/AAAJAAMAAAABAPz/AAABAAAAAAACAPz/AAABAAAAAAADAPz/AAABAAAAAAD+/wMAAAABAAIAAAD//wMAAAABAAIAAAAAAAMAAAABAAIAAAABAAMAAAABAAIAAAACAAMAAAABAAIAAAADAAMAAAABAAIAAAAHAPz/AAACAAAAAAAHAP3/AAACAAEAAAAHAP7/AAAJAAAAAAAHAP//AAAJAAEAAAAHAAAAAAAJAAIAAAAHAAEAAAACAAEAAAAHAAIAAAACAAEAAAAHAAMAAAACAAIAAAD4/wMAAAAAAAIAAAD4//z/AAAAAAAAAAD5//z/AAABAAAAAAD6//z/AAABAAAAAAD8//z/AAABAAAAAAD9//z/AAABAAAAAAD7//z/AAABAAAAAAAEAPz/AAABAAAAAAAFAPz/AAABAAAAAAAGAPz/AAABAAAAAAD8/wMAAAABAAIAAAD9/wMAAAABAAIAAAD5/wMAAAABAAIAAAD6/wMAAAABAAIAAAD7/wMAAAABAAIAAAAEAAMAAAABAAIAAAAFAAMAAAABAAIAAAAGAAMAAAABAAIAAAD4//3/AAAAAAEAAAD4//7/AAAHAAAAAAD4////AAAHAAEAAAD4/wAAAAAHAAIAAAD4/wEAAAAAAAEAAAD4/wIAAAAAAAEAAAD8////AAAEAAMAAAD8/wAAAAAEAAMAAAD8//7/AAAEAAMAAAD8/wEAAAAEAAMAAAADAAEAAAAEAAMAAAADAAAAAAAEAAMAAAADAP//AAAEAAMAAAADAP7/AAAEAAMAAAA=")
+tile_map_data = PackedByteArray("AAD+//z/AAABAAAAAAD///z/AAABAAAAAAAAAPz/AAABAAAAAAABAPz/AAABAAAAAAACAPz/AAABAAAAAAADAPz/AAABAAAAAAD+/wMAAAAHAAQAAAD//wMAAAAIAAQAAAAAAAMAAAAJAAQAAAABAAMAAAABAAIAAAACAAMAAAABAAIAAAADAAMAAAABAAIAAAAHAPz/AAACAAAAAAAHAP3/AAACAAEAAAAHAP7/AAAJAAAAAAAHAP//AAAJAAEAAAAHAAAAAAAJAAIAAAAHAAEAAAACAAEAAAAHAAIAAAACAAEAAAAHAAMAAAACAAIAAAD4/wMAAAAAAAIAAAD4//z/AAAAAAAAAAD5//z/AAABAAAAAAD6//z/AAABAAAAAAD8//z/AAABAAAAAAD9//z/AAABAAAAAAD7//z/AAABAAAAAAAEAPz/AAABAAAAAAAFAPz/AAABAAAAAAAGAPz/AAABAAAAAAD8/wMAAAABAAIAAAD9/wMAAAABAAIAAAD5/wMAAAABAAIAAAD6/wMAAAABAAIAAAD7/wMAAAABAAIAAAAEAAMAAAABAAIAAAAFAAMAAAABAAIAAAAGAAMAAAABAAIAAAD4//3/AAAAAAEAAAD4//7/AAAHAAAAAAD4////AAAHAAEAAAD4/wAAAAAHAAIAAAD4/wEAAAAAAAEAAAD4/wIAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_sjqg6")
 
 [node name="Doors2" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD4////AAAGAAEAAAAHAP//AAAIAAEAAAD///z/AAAGAAMAAAA=")
+tile_map_data = PackedByteArray("AAD4////AAAGAAEAAAAHAP//AAAIAAEAAAD//wMAAAAGAAQAAAA=")
 tile_set = SubResource("TileSet_sjqg6")
 
 [node name="CamChangeArea2" type="Area2D" parent="."]
@@ -116,18 +116,18 @@ zoom = Vector2(2, 2)
 position = Vector2(1, -2.5)
 shape = SubResource("RectangleShape2D_fu31k")
 
-[node name="DoorTeleport5" parent="." instance=ExtResource("3_d2vv5")]
-position = Vector2(-16, -107)
+[node name="DoorTeleport5" parent="." instance=ExtResource("3_j6ekw")]
+position = Vector2(-16, 113)
 TP_distance = 148
 
-[node name="DoorTeleport6" parent="." instance=ExtResource("3_d2vv5")]
+[node name="DoorTeleport6" parent="." instance=ExtResource("3_j6ekw")]
 position = Vector2(236, -16)
-TP_distance = 256
+TP_distance = 356
 direction = 3
 
-[node name="DoorTeleport7" parent="." instance=ExtResource("3_d2vv5")]
+[node name="DoorTeleport7" parent="." instance=ExtResource("3_j6ekw")]
 position = Vector2(-237, -16)
-TP_distance = 128
+TP_distance = 148
 direction = 2
 
 [connection signal="body_entered" from="CamChangeArea2" to="." method="_on_cam_change_area_body_entered"]

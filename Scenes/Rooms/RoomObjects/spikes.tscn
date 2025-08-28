@@ -55,7 +55,6 @@ position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_1ybib")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
