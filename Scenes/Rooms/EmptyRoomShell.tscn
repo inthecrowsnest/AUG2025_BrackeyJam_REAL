@@ -1,0 +1,166 @@
+[gd_scene load_steps=12 format=4 uid="uid://dy8u6gwrlk4x0"]
+
+[ext_resource type="Script" uid="uid://r858t56wk2od" path="res://Scripts/room_clear.gd" id="1_3vcbv"]
+[ext_resource type="Texture2D" uid="uid://csi1822s8md57" path="res://Sprites/TileSets/MouseTileSeTWIP.png" id="1_tj1mw"]
+[ext_resource type="PackedScene" uid="uid://dm44txshdulyl" path="res://Scenes/CharacterComponents/Player.tscn" id="2_pyqn8"]
+[ext_resource type="PackedScene" uid="uid://cuo3ukkp6g0fs" path="res://Scenes/Rooms/RoomObjects/Lever.tscn" id="3_synes"]
+[ext_resource type="PackedScene" uid="uid://ocw5iv1b4sts" path="res://Scenes/Rooms/RoomObjects/doorTeleport.tscn" id="5_yla1s"]
+[ext_resource type="PackedScene" uid="uid://c1o1hmon4dytg" path="res://Scenes/Rooms/RoomObjects/vase.tscn" id="6_l1s5d"]
+[ext_resource type="PackedScene" uid="uid://cc54anniyqsv8" path="res://Scenes/Rooms/RoomObjects/spikes.tscn" id="6_t8iui"]
+[ext_resource type="PackedScene" uid="uid://bnmnlaqwjne11" path="res://Scenes/Rooms/RoomObjects/itemTable.tscn" id="8_qfmoj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qfmoj"]
+texture = ExtResource("1_tj1mw")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:2/0 = 0
+9:2/0 = 0
+9:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:3/0 = 0
+5:3/0 = 0
+8:3/0 = 0
+8:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.5859, -7.32851, 10.6741, -7.00988, 16, -16, -16, -16)
+9:3/0 = 0
+9:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+8:4/0 = 0
+8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -12.5859, -16, -12.2673, 6.37261, 9.71824, 6.69125, 10.3555, -16, 16, -16, 16, 16, -16, 16)
+9:4/0 = 0
+9:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+2:6/0 = 0
+1:6/0 = 0
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, -16, -16, -16, 16, 16, 16, 16, 11.7893, -7.16919, 12.108, -7.16919, -12.7452, 16, -13.0639)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:3/0 = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:4/0 = 0
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:4/0 = 0
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+9:1/0 = 0
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16, -16, 11.1521, 6.53193, 11.4707, 6.85056, -12.4266, -16, -13.0639)
+9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_synes"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 7
+sources/0 = SubResource("TileSetAtlasSource_qfmoj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vcbv"]
+size = Vector2(273, 205)
+
+[node name="EmptyRoomShell" type="Node2D" node_paths=PackedStringArray("doors", "camera")]
+script = ExtResource("1_3vcbv")
+doors = NodePath("Doors")
+camera = NodePath("CamChangeArea/Camera2D")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD/////AAAEAAEAAAAAAP//AAAEAAEAAAAAAAAAAAAEAAEAAAABAAAAAAAEAAEAAAD//wAAAAAEAAEAAAABAP//AAAEAAEAAAACAP//AAAEAAEAAAD+////AAAEAAEAAAD+/wAAAAAEAAEAAAD+/wEAAAAEAAEAAAD//wEAAAAEAAEAAAAAAAEAAAAEAAEAAAABAAEAAAAEAAEAAAACAAEAAAAEAAEAAAACAAAAAAAEAAEAAAACAP7/AAAEAAEAAAABAP7/AAAEAAEAAAAAAP7/AAAEAAEAAAD///7/AAAEAAEAAAD+//7/AAAEAAEAAAD9//7/AAAEAAEAAAD9////AAAEAAEAAAD9/wAAAAAEAAEAAAD9/wEAAAAEAAEAAAD9/wIAAAAEAAEAAAD+/wIAAAAEAAEAAAACAAIAAAAEAAEAAAABAAIAAAAEAAEAAAAAAAIAAAAEAAEAAAD//wIAAAAEAAEAAAD8////AAAEAAEAAAD8//7/AAAEAAEAAAD8/wAAAAAEAAEAAAD8/wEAAAAEAAEAAAD8/wIAAAAEAAEAAAD8//3/AAAEAAEAAAD+//3/AAAEAAEAAAD///3/AAAEAAEAAAAAAP3/AAAEAAEAAAABAP3/AAAEAAEAAAACAP3/AAAEAAEAAAADAP3/AAAEAAEAAAADAP7/AAAEAAEAAAADAP//AAAEAAEAAAADAAEAAAAEAAEAAAADAAIAAAAEAAEAAAADAAAAAAAEAAEAAAD9//3/AAAEAAEAAAD7////AAAFAAMAAAD//wMAAAAFAAMAAAAEAP//AAAFAAMAAAD///z/AAAFAAMAAAA=")
+tile_set = SubResource("TileSet_synes")
+
+[node name="Walls_Pits" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAEAP3/AAACAAEAAAAEAP7/AAAJAAAAAAAEAP//AAAJAAEAAAAEAAAAAAAJAAIAAAAEAAEAAAACAAEAAAAEAAIAAAACAAEAAAD8//z/AAABAAAAAAD9//z/AAABAAAAAAD+//z/AAAHAAMAAAD///z/AAAIAAMAAAAAAPz/AAAJAAMAAAABAPz/AAABAAAAAAACAPz/AAABAAAAAAADAPz/AAABAAAAAAD7//3/AAAAAAEAAAD7//7/AAAHAAAAAAD7////AAAHAAEAAAD7/wAAAAAHAAIAAAD7/wEAAAAAAAEAAAD7/wIAAAAAAAEAAAD8/wMAAAABAAIAAAD9/wMAAAABAAIAAAD+/wMAAAAHAAQAAAD//wMAAAAIAAQAAAAAAAMAAAAJAAQAAAABAAMAAAABAAIAAAACAAMAAAABAAIAAAADAAMAAAABAAIAAAAEAAMAAAACAAIAAAD7/wMAAAAAAAIAAAD7//z/AAAAAAAAAAAEAPz/AAACAAAAAAA=")
+tile_set = SubResource("TileSet_synes")
+
+[node name="Doors" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD7////AAAGAAEAAAAEAP//AAAIAAEAAAD///z/AAAGAAMAAAD//wMAAAAGAAQAAAA=")
+tile_set = SubResource("TileSet_synes")
+
+[node name="Lever" parent="." instance=ExtResource("3_synes")]
+position = Vector2(-75, 44)
+
+[node name="CamChangeArea" type="Area2D" parent="."]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="CamChangeArea"]
+zoom = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CamChangeArea"]
+position = Vector2(-0.5, -2.5)
+shape = SubResource("RectangleShape2D_3vcbv")
+
+[node name="DoorTeleport" parent="." instance=ExtResource("5_yla1s")]
+position = Vector2(-16, -107)
+
+[node name="DoorTeleport2" parent="." instance=ExtResource("5_yla1s")]
+position = Vector2(-143, -14)
+direction = 2
+
+[node name="DoorTeleport3" parent="." instance=ExtResource("5_yla1s")]
+position = Vector2(140, -15)
+direction = 3
+
+[node name="DoorTeleport4" parent="." instance=ExtResource("5_yla1s")]
+position = Vector2(-16, 109)
+direction = 1
+
+[node name="Spikes" parent="." instance=ExtResource("6_t8iui")]
+position = Vector2(66, -47)
+
+[node name="Vase" parent="." instance=ExtResource("6_l1s5d")]
+position = Vector2(-45, -99)
+
+[node name="Vase2" parent="." instance=ExtResource("6_l1s5d")]
+position = Vector2(114, 78)
+
+[node name="Vase3" parent="." instance=ExtResource("6_l1s5d")]
+position = Vector2(92, 78)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_pyqn8")]
+position = Vector2(-16, -22)
+scale = Vector2(0.5, 0.5)
+
+[node name="ItemTable" parent="." instance=ExtResource("8_qfmoj")]
+position = Vector2(-71, -97)
+
+[node name="ItemTable2" parent="." instance=ExtResource("8_qfmoj")]
+position = Vector2(-113, 82)
+
+[connection signal="lever_switched" from="Lever" to="." method="_on_lever_lever_switched"]
+[connection signal="body_entered" from="CamChangeArea" to="." method="_on_cam_change_area_body_entered"]
+[connection signal="body_entered" from="CamChangeArea" to="Spikes" method="_on_player_enter"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cft6nrmjvhbwe"]
+
+[ext_resource type="PackedScene" uid="uid://xsmaopplejfx" path="res://Scenes/Rooms/PREMADEROOMS/startingRoom.tscn" id="1_4oubt"]
+[ext_resource type="PackedScene" uid="uid://dm44txshdulyl" path="res://Scenes/CharacterComponents/Player.tscn" id="2_0aug2"]
+[ext_resource type="PackedScene" uid="uid://mtnwi33luawh" path="res://Scenes/Rooms/PREMADEROOMS/itemRoom1.tscn" id="3_0aug2"]
+[ext_resource type="PackedScene" uid="uid://clrl5mgp3s4a" path="res://Scenes/Rooms/PREMADEROOMS/enemyroom1.tscn" id="4_hjx0v"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="StartingRoom" parent="." instance=ExtResource("1_4oubt")]
+position = Vector2(288, 162)
+
+[node name="EnemyRoom1" parent="." instance=ExtResource("3_0aug2")]
+position = Vector2(1440, 161)
+roomClear = true
+
+[node name="ItemRoom1" parent="." instance=ExtResource("4_hjx0v")]
+position = Vector2(862, 161)
+roomClear = true
+
+[node name="Player" parent="." instance=ExtResource("2_0aug2")]
+position = Vector2(276, 156)
+scale = Vector2(0.5, 0.5)
