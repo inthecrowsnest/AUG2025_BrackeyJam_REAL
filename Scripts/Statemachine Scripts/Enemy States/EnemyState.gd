@@ -1,9 +1,13 @@
 class_name EnemyState extends State
 
-var parent: Enemy
+var parent: EnemyController
+
+@export var animation_name: String
 
 func enter():
-	pass
+	print(animation_name)
+	parent.animation_tree.get("parameters/playback").travel(animation_name)
+	parent.animation_tree.set("parameters/" + animation_name+ "/blend_position", parent.facingDirection)
 	
 func exit():
 	pass

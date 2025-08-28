@@ -10,6 +10,7 @@ var input_direction: Vector2
 func enter():
 	super()
 	
+	
 func exit():
 	super()
 
@@ -18,7 +19,7 @@ func process_input(event) -> State:
 	
 	if event.is_action_pressed("attack"):
 		return attackState
-	elif event.is_action_pressed("dash"):
+	elif event.is_action_pressed("dash") and parent.canDash:
 		return dashState
 	
 	return null

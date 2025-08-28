@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0f7f0wcg8fqh"]
+[gd_scene load_steps=8 format=3 uid="uid://b0f7f0wcg8fqh"]
 
 [ext_resource type="PackedScene" uid="uid://dm44txshdulyl" path="res://Scenes/CharacterComponents/Player.tscn" id="1_r150o"]
 [ext_resource type="Script" uid="uid://bu5t2w41wwsl4" path="res://Scripts/hurtBox.gd" id="2_kln2b"]
 [ext_resource type="Texture2D" uid="uid://cxmfcom4px13c" path="res://icon.svg" id="3_kln2b"]
+[ext_resource type="PackedScene" uid="uid://0qmcafn57svd" path="res://Scenes/items.tscn" id="4_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://ble2uj0sygngr" path="res://Scenes/ImprovedRangedEnemy.tscn" id="5_pbw6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idj7w"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rgh2o"]
-vertices = PackedVector2Array(184.797, 90.7969, -172.789, 91.7891, -169.797, -103.797, 186.789, -104.789)
+vertices = PackedVector2Array(334.797, 142.773, -172.789, 91.8125, -169.797, -103.82, 346.789, -186.758)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-170, -104, 187, -105, 185, 91, -173, 92)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-170, -104, 347, -187, 335, 143, -173, 92)])
 agent_radius = 0.2
 
 [node name="Main" type="Node2D"]
@@ -17,11 +19,8 @@ metadata/_edit_vertical_guides_ = [-209.0]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_r150o")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
-
 [node name="hurtbox" type="Area2D" parent="."]
-position = Vector2(120, 0)
+position = Vector2(249, 109)
 scale = Vector2(3.515, 3.515)
 script = ExtResource("2_kln2b")
 metadata/_custom_type_script = "uid://bu5t2w41wwsl4"
@@ -34,6 +33,15 @@ scale = Vector2(0.155, 0.155)
 texture = ExtResource("3_kln2b")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
-position = Vector2(-1, 1)
+position = Vector2(-47, 15)
 navigation_polygon = SubResource("NavigationPolygon_rgh2o")
+
+[node name="Items" parent="." instance=ExtResource("4_rgh2o")]
+position = Vector2(-124, -1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="RangedEnemy" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("5_pbw6q")]
+position = Vector2(250, -108)
+goal = NodePath("../CharacterBody2D")

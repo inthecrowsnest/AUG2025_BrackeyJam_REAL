@@ -3,13 +3,11 @@ extends EnemyState
 @onready var idleState = $"../Idle"
 @onready var attackState = $"../Attacking"
 @export var moveSpeed: float
-@export var goal: Node = null
+
 
 @onready var navigation_agent_2d: NavigationAgent2D = $"../../NavigationAgent2D"
 @onready var timer: Timer = $"../../Timer"
 
-
-var input_direction: Vector2
 
 var target_found = false
 var flee = false
@@ -17,7 +15,7 @@ var shoot = false
 
 func enter():
 	super()
-	navigation_agent_2d.target_position = goal.global_position
+	navigation_agent_2d.target_position = parent.goal.global_position
 	timer.start()
 	
 func exit():
@@ -50,19 +48,17 @@ func process_physics(delta:float) -> State:
 		elif target_found and flee:
 			parent.velocity = -nav_point_direction * moveSpeed * delta
 		parent.move_and_slide()
-		_check_if_should_flip(nav_point_direction.x)
+		_check_if_should_flip(nav_point_direction)
 	return null
 	
-func _check_if_should_flip(new_dir: int) -> void:	
-	if new_dir > 0:
-		parent.sprite.flip_h = false
-	if new_dir < 0:
-		parent.sprite.flip_h = true
+func _check_if_should_flip(new_dir: Vector2) -> void:	
+	parent.facingDirection = new_dir
+	parent.animation_tree.set("parameters/walk/blend_position", parent.facingDirection)
 
 
 func _on_timer_timeout() -> void:
-	if navigation_agent_2d.target_position != goal.global_position:
-		navigation_agent_2d.target_position = goal.global_position
+	if navigation_agent_2d.target_position != parent.goal.global_position:
+		navigation_agent_2d.target_position = parent.goal.global_position
 	timer.start()
 
 
@@ -77,3 +73,4 @@ func _on_attack_range_body_exited(body: Node2D) -> void:
 
 func _on_flee_range_body_entered(body: Node2D) -> void:
 	flee = true
+	target_found = false

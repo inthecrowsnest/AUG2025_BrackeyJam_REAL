@@ -9,7 +9,7 @@ func enter():
 	super()
 	parent.velocity = Vector2.ZERO
 	is_anim_finished = false
-	parent.animator.connect("animation_finished", func(_anim): is_anim_finished = true)
+	parent.animation_tree.connect("animation_finished", func(_anim): is_anim_finished = true)
 	
 func exit():
 	super()
@@ -20,10 +20,10 @@ func process_input(event) -> State:
 	
 func process_frame(delta: float) -> State:
 	super(delta)
-	if is_anim_finished and parent.velocity != Vector2.ZERO:
+	if is_anim_finished:
 		return chasingState
-	elif is_anim_finished:
-		return idleState
+	#elif is_anim_finished:
+		#return idleState
 	
 	return null
 
