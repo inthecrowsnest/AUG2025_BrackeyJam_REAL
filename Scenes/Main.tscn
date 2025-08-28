@@ -18,9 +18,6 @@ metadata/_edit_vertical_guides_ = [-209.0]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_r150o")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
-
 [node name="hurtbox" type="Area2D" parent="."]
 position = Vector2(120, 0)
 scale = Vector2(3.515, 3.515)
@@ -41,3 +38,6 @@ navigation_polygon = SubResource("NavigationPolygon_rgh2o")
 
 [node name="Items" parent="." instance=ExtResource("4_rgh2o")]
 position = Vector2(-124, -1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)

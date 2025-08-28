@@ -5,6 +5,9 @@ class_name Player extends CharacterBody2D
 @onready var anim_tree = $AnimationTree
 @onready var sprite = $Sprite
 @onready var healthBar = $healthBar
+@onready var delay_timer: Timer = $DelayTimer
+
+var canDash = true
 
 var health: int = 100
 
@@ -31,3 +34,7 @@ func _process(delta: float) -> void:
 	
 func die():
 	get_tree().reload_current_scene()
+
+
+func _on_delay_timer_timeout() -> void:
+	canDash = true

@@ -45,12 +45,11 @@ func process_physics(delta:float) -> State:
 		parent.move_and_slide()
 		_check_if_should_flip(nav_point_direction.x)
 	return null
-	
+
+
 func _check_if_should_flip(new_dir: int) -> void:	
-	if new_dir > 0:
-		parent.sprite.flip_h = false
-	if new_dir < 0:
-		parent.sprite.flip_h = true
+	parent.facingDirection = new_dir
+	parent.anim_tree.set("parameters/walk/blend_position", parent.facingDirection)
 
 
 func _on_timer_timeout() -> void:

@@ -865,7 +865,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="DelayTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 1.106
 one_shot = true
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("starting_state")]
@@ -921,4 +921,4 @@ offset_right = 10.0
 offset_bottom = -16.0
 
 [connection signal="timeout" from="Timer" to="StateMachine/Dash" method="_on_timer_timeout"]
-[connection signal="timeout" from="DelayTimer" to="StateMachine/Dash" method="_on_delay_timer_timeout"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
