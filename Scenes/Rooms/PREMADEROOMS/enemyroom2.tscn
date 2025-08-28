@@ -125,7 +125,7 @@ direction = 1
 
 [node name="DoorTeleport6" parent="." instance=ExtResource("3_xvhvs")]
 position = Vector2(236, -16)
-TP_distance = 128
+TP_distance = 148
 direction = 3
 
 [node name="DoorTeleport7" parent="." instance=ExtResource("3_xvhvs")]

@@ -819,7 +819,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-139, 5.62381)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tb0jd"]
-size = Vector2(18, 34)
+size = Vector2(18, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4pfd"]
 size = Vector2(18, 34)
@@ -856,7 +856,7 @@ parameters/idle/blend_position = Vector2(0.113944, -0.241758)
 parameters/walk/blend_position = Vector2(0.145817, -0.955157)
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_tb0jd")
 
 [node name="Timer" type="Timer" parent="."]
