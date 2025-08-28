@@ -120,7 +120,7 @@ shape = SubResource("RectangleShape2D_fu31k")
 
 [node name="DoorTeleport5" parent="." instance=ExtResource("3_hhc5j")]
 position = Vector2(-16, -108)
-TP_distance = 160
+TP_distance = 192
 
 [node name="DoorTeleport7" parent="." instance=ExtResource("3_hhc5j")]
 position = Vector2(-237, -16)

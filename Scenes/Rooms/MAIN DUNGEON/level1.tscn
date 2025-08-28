@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://cft6nrmjvhbwe"]
+[gd_scene load_steps=14 format=3 uid="uid://cft6nrmjvhbwe"]
 
 [ext_resource type="PackedScene" uid="uid://xsmaopplejfx" path="res://Scenes/Rooms/PREMADEROOMS/startingRoom.tscn" id="1_4oubt"]
-[ext_resource type="PackedScene" uid="uid://dm44txshdulyl" path="res://Scenes/CharacterComponents/Player.tscn" id="2_0aug2"]
 [ext_resource type="PackedScene" uid="uid://mtnwi33luawh" path="res://Scenes/Rooms/PREMADEROOMS/itemRoom1.tscn" id="3_0aug2"]
 [ext_resource type="PackedScene" uid="uid://clrl5mgp3s4a" path="res://Scenes/Rooms/PREMADEROOMS/enemyroom1.tscn" id="4_hjx0v"]
 [ext_resource type="PackedScene" uid="uid://c0o36gveubl1h" path="res://Scenes/Rooms/PREMADEROOMS/3LeverPuzzleRoom.tscn" id="4_swxi4"]
@@ -59,7 +58,3 @@ position = Vector2(1443, -481)
 
 [node name="cornerEnemy" parent="." instance=ExtResource("14_0ak4g")]
 position = Vector2(862, -478)
-
-[node name="Player" parent="." instance=ExtResource("2_0aug2")]
-position = Vector2(2018, -438)
-scale = Vector2(0.5, 0.5)

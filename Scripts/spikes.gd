@@ -17,7 +17,7 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 
 #incremenet state
 func _on_timer_timeout() -> void:
-	print("timeout")
+	#print("timeout")
 	if state < 2:
 		state += 1
 	elif state == 2:

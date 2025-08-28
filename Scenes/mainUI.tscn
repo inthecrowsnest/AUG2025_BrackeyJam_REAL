@@ -1,0 +1,166 @@
+[gd_scene load_steps=18 format=3 uid="uid://bho4rdqa4xarm"]
+
+[ext_resource type="Script" uid="uid://bcya4rgtnysbm" path="res://Scripts/mainUI.gd" id="1_jlxys"]
+[ext_resource type="Texture2D" uid="uid://csi1822s8md57" path="res://Sprites/TileSets/MouseTileSeTWIP.png" id="1_xiylh"]
+[ext_resource type="PackedScene" uid="uid://dwikitakdnh1a" path="res://Scenes/pauseMenu.tscn" id="2_5s2v3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlxys"]
+atlas = ExtResource("1_xiylh")
+region = Rect2(192, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s2v3"]
+atlas = ExtResource("1_xiylh")
+region = Rect2(192, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ig1of"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlxys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5s2v3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0b11"]
+atlas = ExtResource("1_xiylh")
+region = Rect2(288, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f77xj"]
+atlas = ExtResource("1_xiylh")
+region = Rect2(256, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qv1b"]
+atlas = ExtResource("1_xiylh")
+region = Rect2(256, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmm3x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0b11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f77xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qv1b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tonm"]
+atlas = ExtResource("1_xiylh")
+region = Rect2(224, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnvxr"]
+atlas = ExtResource("1_xiylh")
+region = Rect2(224, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1b4t5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tonm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnvxr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig1of"]
+atlas = ExtResource("1_xiylh")
+region = Rect2(192, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmm3x"]
+atlas = ExtResource("1_xiylh")
+region = Rect2(224, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b4t5"]
+atlas = ExtResource("1_xiylh")
+region = Rect2(256, 256, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdbst"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig1of")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmm3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b4t5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MainUi" type="Control" node_paths=PackedStringArray("pause", "speed", "play")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jlxys")
+pause = NodePath("CanvasLayer/PauseIndicator")
+speed = NodePath("CanvasLayer/SpeedIndicator")
+play = NodePath("CanvasLayer/PlayIndicator")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_5s2v3")]
+offset_left = 380.0
+offset_top = 118.0
+offset_right = 380.0
+offset_bottom = 118.0
+scale = Vector2(3, 3)
+
+[node name="PauseIndicator" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(993, 32)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_ig1of")
+
+[node name="SpeedIndicator" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(1098, 32)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_qmm3x")
+
+[node name="PlayIndicator" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(1045, 32)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_1b4t5")
+
+[node name="Health1" type="AnimatedSprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(46, 34)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_kdbst")
+frame_progress = 0.562769
+
+[node name="Health2" type="AnimatedSprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(109, 35)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_kdbst")
+frame_progress = 0.562769
+
+[node name="Health3" type="AnimatedSprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(172, 36)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_kdbst")
+frame_progress = 0.562769
+
+[connection signal="unpause" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_unpause"]

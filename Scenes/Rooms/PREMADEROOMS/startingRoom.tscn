@@ -121,7 +121,7 @@ TP_distance = 160
 
 [node name="DoorTeleport6" parent="." instance=ExtResource("2_dmoyy")]
 position = Vector2(236, -16)
-TP_distance = 128
+TP_distance = 148
 direction = 3
 
 [connection signal="body_entered" from="CamChangeArea2" to="." method="_on_cam_change_area_body_entered"]
