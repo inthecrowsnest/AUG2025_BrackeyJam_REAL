@@ -30,7 +30,7 @@ func process_frame(delta: float) -> State:
 	if input_direction == Vector2.ZERO:
 		return idleState
 	
-	_check_if_should_flip(input_direction.y)
+	_check_if_should_flip(input_direction)
 	
 	
 	return null
@@ -40,9 +40,12 @@ func process_physics(delta:float) -> State:
 	parent.velocity = input_direction * moveSpeed
 	return null
 	
-func _check_if_should_flip(new_dir: int) -> void:	
-	if new_dir > 0:
-		parent.sprite.flip_h = false
-	if new_dir < 0:
-		parent.sprite.flip_h = true
+func _check_if_should_flip(new_dir: Vector2) -> void:	
+	parent.facingDirection = new_dir
+	parent.anim_tree.set("parameters/walk/blend_position", parent.facingDirection)
+	
+	#if new_dir.x > 0:
+		#parent.sprite.flip_h = false
+	#if new_dir.x < 0:
+		#parent.sprite.flip_h = true
 		
