@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://cc54anniyqsv8"]
+
+[ext_resource type="Script" uid="uid://j17dy04tqh4p" path="res://Scripts/spikes.gd" id="1_7dpyr"]
+[ext_resource type="Texture2D" uid="uid://csi1822s8md57" path="res://Sprites/TileSets/MouseTileSeTWIP.png" id="1_48mr5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dpyr"]
+atlas = ExtResource("1_48mr5")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np835"]
+atlas = ExtResource("1_48mr5")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs6gn"]
+atlas = ExtResource("1_48mr5")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xhgjy"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_7dpyr")
+}, {
+"duration": 2.5,
+"texture": SubResource("AtlasTexture_np835")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs6gn")
+}],
+"loop": false,
+"name": &"spikes",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ybib"]
+size = Vector2(25, 30)
+
+[node name="Spikes" type="Node2D" node_paths=PackedStringArray("animation", "timer")]
+script = ExtResource("1_7dpyr")
+animation = NodePath("AnimatedSprite2D")
+timer = NodePath("Timer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xhgjy")
+animation = &"spikes"
+frame = 2
+frame_progress = 1.0
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_1ybib")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
