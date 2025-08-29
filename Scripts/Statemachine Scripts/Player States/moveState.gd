@@ -43,7 +43,7 @@ func process_physics(delta:float) -> State:
 	
 func _check_if_should_flip(new_dir: Vector2) -> void:	
 	parent.facingDirection = new_dir
-	parent.anim_tree.set("parameters/walk/blend_position", parent.facingDirection)
+	parent.anim_tree.set("parameters/StateMachine/walk/blend_position", parent.facingDirection)
 	
 	#if new_dir.x > 0:
 		#parent.sprite.flip_h = false
