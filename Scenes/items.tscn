@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0b38ofnq3mub" path="res://Scripts/itemContainer.gd" id="1_hvysp"]
 [ext_resource type="Texture2D" uid="uid://cxmfcom4px13c" path="res://icon.svg" id="2_gio08"]
-[ext_resource type="Resource" uid="uid://bhtuf1p2jtv56" path="res://Resources/Items/DoubleDash.tres" id="2_u4qx2"]
+[ext_resource type="Resource" uid="uid://cn3rj4ufwxx4x" path="res://Resources/Items/AttackSpeed.tres" id="2_u4qx2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvysp"]
 size = Vector2(124, 124)

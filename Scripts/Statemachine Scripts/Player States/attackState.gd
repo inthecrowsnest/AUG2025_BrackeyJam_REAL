@@ -7,9 +7,11 @@ var is_anim_finished: bool
 
 func enter():
 	super()
+	parent.animator.speed_scale = parent.attackSpeed
 	parent.velocity = Vector2.ZERO
 	is_anim_finished = false
 	parent.anim_tree.animation_finished.connect(func(_anim): is_anim_finished = true)
+	
 	
 func exit():
 	super()

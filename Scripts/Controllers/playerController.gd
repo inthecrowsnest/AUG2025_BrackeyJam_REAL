@@ -7,7 +7,9 @@ class_name Player extends Controller
 @onready var healthBar = $healthBar
 @onready var delay_timer: Timer = $DelayTimer
 
+
 var canDash = true
+var attackSpeed = 1
 
 var health: int = 100
 
@@ -43,4 +45,4 @@ func _on_delay_timer_timeout() -> void:
 	
 func obtain_item(item: ItemData) -> void:
 	#TODO
-	pass
+	attackSpeed *= item.attackSpeedMultiplier
