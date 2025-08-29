@@ -15,6 +15,10 @@ run/main_scene="uid://b0f7f0wcg8fqh"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Frametimer="*res://Scripts/frametimer.gd"
+
 [input]
 
 left={

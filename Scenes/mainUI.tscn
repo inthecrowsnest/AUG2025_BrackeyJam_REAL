@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://bho4rdqa4xarm"]
+[gd_scene load_steps=19 format=3 uid="uid://bho4rdqa4xarm"]
 
 [ext_resource type="Script" uid="uid://bcya4rgtnysbm" path="res://Scripts/mainUI.gd" id="1_jlxys"]
 [ext_resource type="Texture2D" uid="uid://csi1822s8md57" path="res://Sprites/TileSets/MouseTileSeTWIP.png" id="1_xiylh"]
 [ext_resource type="PackedScene" uid="uid://dwikitakdnh1a" path="res://Scenes/pauseMenu.tscn" id="2_5s2v3"]
+[ext_resource type="Script" uid="uid://bau4ts00sskfc" path="res://Scripts/gameTimer.gd" id="4_ig1of"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jlxys"]
 atlas = ExtResource("1_xiylh")
@@ -106,7 +107,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="MainUi" type="Control" node_paths=PackedStringArray("pause", "speed", "play")]
+[node name="MainUi" type="Control" node_paths=PackedStringArray("pause", "speed", "play", "label", "gameTimer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,10 +118,13 @@ script = ExtResource("1_jlxys")
 pause = NodePath("CanvasLayer/PauseIndicator")
 speed = NodePath("CanvasLayer/SpeedIndicator")
 play = NodePath("CanvasLayer/PlayIndicator")
+label = NodePath("CanvasLayer/UITimer")
+gameTimer = NodePath("CanvasLayer/UITimer/GameTimer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_5s2v3")]
+visible = false
 offset_left = 380.0
 offset_top = 118.0
 offset_right = 380.0
@@ -163,4 +167,24 @@ scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_kdbst")
 frame_progress = 0.562769
 
+[node name="UITimer" type="Label" parent="CanvasLayer"]
+offset_left = 1006.0
+offset_top = 591.0
+offset_right = 1128.0
+offset_bottom = 637.0
+theme_override_colors/font_color = Color(0.678431, 0.588235, 0.631373, 1)
+theme_override_font_sizes/font_size = 32
+text = "0:00:00"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="GameTimer" type="Timer" parent="CanvasLayer/UITimer" node_paths=PackedStringArray("label")]
+process_mode = 3
+wait_time = 20.0
+one_shot = true
+ignore_time_scale = true
+script = ExtResource("4_ig1of")
+label = NodePath("..")
+
 [connection signal="unpause" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_unpause"]
+[connection signal="timeout" from="CanvasLayer/UITimer/GameTimer" to="." method="_on_game_timer_timeout"]
