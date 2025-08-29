@@ -13,6 +13,8 @@ var health: int = 100
 
 var facingDirection: Vector2 = Vector2(0, 1.0)
 
+var items = []
+
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
 	# that way they can move and react accordingly
@@ -38,3 +40,7 @@ func die():
 
 func _on_delay_timer_timeout() -> void:
 	canDash = true
+	
+func obtain_item(item: ItemData) -> void:
+	#TODO
+	pass

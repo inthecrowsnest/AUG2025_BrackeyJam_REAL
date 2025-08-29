@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://6hqrsqyl3pv4"]
 
-[ext_resource type="Script" uid="uid://bq1dv5i2d82dk" path="res://Scripts/player.gd" id="1_kpjcp"]
+[ext_resource type="Script" uid="uid://bq1dv5i2d82dk" path="res://Scripts/Controllers/player.gd" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://cxmfcom4px13c" path="res://icon.svg" id="2_kne1u"]
 [ext_resource type="PackedScene" uid="uid://c6qnvbpklxjtg" path="res://healthBar.tscn" id="3_kne1u"]
 
