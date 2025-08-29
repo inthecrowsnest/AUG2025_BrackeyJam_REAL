@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://6hqrsqyl3pv4"]
+[gd_scene load_steps=4 format=3 uid="uid://6hqrsqyl3pv4"]
 
 [ext_resource type="Script" uid="uid://bq1dv5i2d82dk" path="res://Scripts/Controllers/player.gd" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://cxmfcom4px13c" path="res://icon.svg" id="2_kne1u"]
-[ext_resource type="PackedScene" uid="uid://c6qnvbpklxjtg" path="res://healthBar.tscn" id="3_kne1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4pfd"]
 size = Vector2(25, 26)
@@ -25,11 +24,5 @@ shape = SubResource("RectangleShape2D_d4pfd")
 process_callback = 0
 wait_time = 0.2
 one_shot = true
-
-[node name="healthBar" parent="." instance=ExtResource("3_kne1u")]
-offset_left = -18.0
-offset_top = -29.0
-offset_right = 16.0
-offset_bottom = -25.0
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
