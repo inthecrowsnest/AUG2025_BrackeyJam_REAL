@@ -31,3 +31,7 @@ func _process(delta: float) -> void:
 	
 func die():
 	$".".queue_free()
+
+
+func _on_hit_box_body_entered(body: Player) -> void:
+	body.take_damage(10)

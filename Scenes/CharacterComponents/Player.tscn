@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dm44txshdulyl"]
+[gd_scene load_steps=59 format=3 uid="uid://dm44txshdulyl"]
 
 [ext_resource type="Script" uid="uid://bkmt5u0efj8e" path="res://Scripts/Controllers/playerController.gd" id="1_2xyk0"]
 [ext_resource type="PackedScene" uid="uid://c6qnvbpklxjtg" path="res://healthBar.tscn" id="2_tb0jd"]
@@ -898,7 +898,7 @@ animation_name = "hurt"
 
 [node name="HurtBox" type="Area2D" parent="StateMachine/Hurt"]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 20
 script = ExtResource("3_tb0jd")
 metadata/_custom_type_script = "uid://diju4ii5s32e"
 
@@ -920,13 +920,6 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_jx437")
 disabled = true
 debug_color = Color(0.809228, 0.412772, 0, 0.42)
-
-[node name="healthBar2" parent="." instance=ExtResource("2_tb0jd")]
-visible = false
-offset_left = -11.0
-offset_top = -19.0
-offset_right = 10.0
-offset_bottom = -16.0
 
 [connection signal="timeout" from="Timer" to="StateMachine/Dash" method="_on_timer_timeout"]
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]

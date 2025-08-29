@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://dhp7m8cfed0ku" path="res://Scripts/hitBox.gd" id="10_g01hn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sepub"]
-radius = 37.0135
+radius = 22.3607
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx437"]
 size = Vector2(54, 36)
@@ -909,6 +909,8 @@ script = ExtResource("9_a238t")
 animation_name = "attack"
 
 [node name="HitBox" type="Area2D" parent="StateMachine/Attacking"]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("10_g01hn")
 metadata/_custom_type_script = "uid://dhp7m8cfed0ku"
 
@@ -919,6 +921,7 @@ disabled = true
 debug_color = Color(0.809228, 0.412772, 0, 0.42)
 
 [node name="healthBar2" parent="." instance=ExtResource("2_wxc58")]
+visible = false
 offset_left = -11.0
 offset_top = -19.0
 offset_right = 10.0
@@ -927,3 +930,4 @@ offset_bottom = -16.0
 [connection signal="body_entered" from="Area2D" to="StateMachine/Chasing" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="StateMachine/Chasing" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="StateMachine/Chasing" method="_on_timer_timeout"]
+[connection signal="body_entered" from="StateMachine/Attacking/HitBox" to="." method="_on_hit_box_body_entered"]

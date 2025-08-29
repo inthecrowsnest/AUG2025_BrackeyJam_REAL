@@ -47,8 +47,6 @@ func take_damage(damage:int):
 	healthBar.set_value(health)
 	healthBar.max_value = healthBar.max_value
 	
-
-
 func die():
 	get_tree().reload_current_scene()
 
