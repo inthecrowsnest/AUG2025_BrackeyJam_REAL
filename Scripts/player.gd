@@ -8,7 +8,8 @@ extends CharacterBody2D
 var dashing: bool = false
 
 #sportmad12
-var health: int = 10
+var health: int = 50
+var maxHealth = 150
 
 @onready var healthBar  = $healthBar
 #sportmad12
@@ -18,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	#sportmad12
-	healthBar.value = health
+	healthBar.set_health_bar(health, maxHealth)
 	
 	if health <= 0:
 		die()
@@ -41,7 +42,10 @@ func _on_dash_timer_timeout() -> void:
 	dashing = false
 	speed = speed / dashFactor
 	
-#sportmad12
+func take_damage(damage:int):
+	health -= damage
+	if health < 0: health = 0
+	healthBar.change
+	
 func die():
 	get_tree().reload_current_scene()
-#sportmad12

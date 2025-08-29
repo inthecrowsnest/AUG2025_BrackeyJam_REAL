@@ -52,6 +52,7 @@ func fire():
 	get_parent().add_child(bullet)
 	_check_if_should_flip(nav_point_direction)
 
+
 func _on_shoot_timer_timeout() -> void:
 	shoot=true
 	fire()

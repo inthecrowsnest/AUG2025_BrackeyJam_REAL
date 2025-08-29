@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0f7f0wcg8fqh"]
+[gd_scene load_steps=9 format=3 uid="uid://b0f7f0wcg8fqh"]
 
 [ext_resource type="PackedScene" uid="uid://dm44txshdulyl" path="res://Scenes/CharacterComponents/Player.tscn" id="1_r150o"]
 [ext_resource type="Script" uid="uid://bu5t2w41wwsl4" path="res://Scripts/hurtBox.gd" id="2_kln2b"]
 [ext_resource type="Texture2D" uid="uid://cxmfcom4px13c" path="res://icon.svg" id="3_kln2b"]
 [ext_resource type="PackedScene" uid="uid://0qmcafn57svd" path="res://Scenes/items.tscn" id="4_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://ble2uj0sygngr" path="res://Scenes/ImprovedRangedEnemy.tscn" id="5_pbw6q"]
+[ext_resource type="PackedScene" uid="uid://b531vv0aot70t" path="res://Scenes/ranged_attack.tscn" id="6_v1gob"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idj7w"]
 
@@ -18,8 +19,6 @@ agent_radius = 0.2
 metadata/_edit_vertical_guides_ = [-209.0]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_r150o")]
-collision_layer = 22
-collision_mask = 28
 
 [node name="hurtbox" type="Area2D" parent="."]
 position = Vector2(249, 109)
@@ -47,3 +46,5 @@ zoom = Vector2(2, 2)
 [node name="RangedEnemy" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("5_pbw6q")]
 position = Vector2(250, -108)
 goal = NodePath("../CharacterBody2D")
+
+[node name="Ranged Attack" parent="RangedEnemy" instance=ExtResource("6_v1gob")]
