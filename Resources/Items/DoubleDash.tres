@@ -1,8 +1,14 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://bhtuf1p2jtv56"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bhtuf1p2jtv56"]
 
 [ext_resource type="Script" uid="uid://b84d1u1qxsajd" path="res://Scripts/Resource Scripts/item_data.gd" id="1_4loa3"]
+[ext_resource type="Texture2D" uid="uid://bj68i07allxf5" path="res://Sprites/ItemSprites/BootItem.png" id="2_7itpl"]
 
 [resource]
 script = ExtResource("1_4loa3")
+sprite = ExtResource("2_7itpl")
 itemName = ""
+addedHealth = 0.0
+addedDamage = 0.0
+dashDelayMultiplier = 1.0
+attackSpeedMultiplier = 1.0
 metadata/_custom_type_script = "uid://b84d1u1qxsajd"

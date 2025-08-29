@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bwkdyby23dk6l"]
+
+[ext_resource type="Script" uid="uid://b84d1u1qxsajd" path="res://Scripts/Resource Scripts/item_data.gd" id="1_y8w1w"]
+[ext_resource type="Texture2D" uid="uid://cp1iwd108n6id" path="res://Sprites/ItemSprites/HeavySwordItem.png" id="2_bkn3c"]
+
+[resource]
+script = ExtResource("1_y8w1w")
+sprite = ExtResource("2_bkn3c")
+itemName = ""
+addedHealth = 0.0
+addedDamage = 0.0
+dashDelayMultiplier = 1.0
+attackSpeedMultiplier = 1.0
+metadata/_custom_type_script = "uid://b84d1u1qxsajd"

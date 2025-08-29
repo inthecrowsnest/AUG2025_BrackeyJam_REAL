@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://cn3rj4ufwxx4x"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cn3rj4ufwxx4x"]
 
 [ext_resource type="Script" uid="uid://b84d1u1qxsajd" path="res://Scripts/Resource Scripts/item_data.gd" id="1_i4kyc"]
+[ext_resource type="Texture2D" uid="uid://dvqay1fsx3cv7" path="res://Sprites/ItemSprites/SkinnySwordItem.png" id="2_wxv46"]
 
 [resource]
 script = ExtResource("1_i4kyc")
+sprite = ExtResource("2_wxv46")
 itemName = ""
 addedHealth = 0.0
 addedDamage = 0.0
 dashDelayMultiplier = 1.0
-attackSpeedMultiplier = 100.0
+attackSpeedMultiplier = 2.0
 metadata/_custom_type_script = "uid://b84d1u1qxsajd"

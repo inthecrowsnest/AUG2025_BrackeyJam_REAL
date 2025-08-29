@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0f7f0wcg8fqh"]
+[gd_scene load_steps=9 format=3 uid="uid://b0f7f0wcg8fqh"]
 
 [ext_resource type="PackedScene" uid="uid://dm44txshdulyl" path="res://Scenes/CharacterComponents/Player.tscn" id="1_r150o"]
 [ext_resource type="Script" uid="uid://bu5t2w41wwsl4" path="res://Scripts/hurtBox.gd" id="2_kln2b"]
 [ext_resource type="Texture2D" uid="uid://cxmfcom4px13c" path="res://icon.svg" id="3_kln2b"]
 [ext_resource type="PackedScene" uid="uid://0qmcafn57svd" path="res://Scenes/items.tscn" id="4_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://ble2uj0sygngr" path="res://Scenes/ImprovedRangedEnemy.tscn" id="5_pbw6q"]
+[ext_resource type="Resource" uid="uid://blxvh8nxf8kq8" path="res://Resources/Items/AddHealth.tres" id="5_v1gob"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idj7w"]
 
@@ -40,6 +41,7 @@ navigation_polygon = SubResource("NavigationPolygon_rgh2o")
 
 [node name="Items" parent="." instance=ExtResource("4_rgh2o")]
 position = Vector2(-124, -1)
+item = ExtResource("5_v1gob")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
