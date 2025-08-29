@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://blxvh8nxf8kq8"]
+
+[ext_resource type="Script" uid="uid://b84d1u1qxsajd" path="res://Scripts/Resource Scripts/item_data.gd" id="1_hfs4h"]
+[ext_resource type="Texture2D" uid="uid://3kyquyummeou" path="res://Sprites/ItemSprites/PillItem.png" id="2_v1ook"]
+
+[resource]
+script = ExtResource("1_hfs4h")
+sprite = ExtResource("2_v1ook")
+itemName = ""
+addedHealth = 10.0
+addedDamage = 0.0
+dashDelayMultiplier = 1.0
+attackSpeedMultiplier = 1.0
+metadata/_custom_type_script = "uid://b84d1u1qxsajd"

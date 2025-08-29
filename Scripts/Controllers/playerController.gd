@@ -10,6 +10,7 @@ class_name Player extends Controller
 
 var canDash = true
 var attackSpeed = 1
+var addedDamage = 1
 
 var health: int = 100
 
@@ -35,7 +36,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
-	
+
 func die():
 	get_tree().reload_current_scene()
 
@@ -46,3 +47,4 @@ func _on_delay_timer_timeout() -> void:
 func obtain_item(item: ItemData) -> void:
 	#TODO
 	attackSpeed *= item.attackSpeedMultiplier
+	healthBar.value += item.addedHealth
