@@ -832,7 +832,7 @@ size = Vector2(18, 34)
 size = Vector2(18, 34)
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 6
+collision_layer = 22
 collision_mask = 12
 motion_mode = 1
 script = ExtResource("1_2xyk0")
@@ -923,3 +923,4 @@ debug_color = Color(0.809228, 0.412772, 0, 0.42)
 
 [connection signal="timeout" from="Timer" to="StateMachine/Dash" method="_on_timer_timeout"]
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
+[connection signal="body_entered" from="StateMachine/Attack/HitBox" to="StateMachine/Attack" method="_on_hit_box_body_entered"]

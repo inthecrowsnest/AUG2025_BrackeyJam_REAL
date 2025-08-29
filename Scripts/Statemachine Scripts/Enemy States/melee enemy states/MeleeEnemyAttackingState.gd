@@ -10,7 +10,7 @@ func enter():
 	parent.velocity = Vector2.ZERO
 	is_anim_finished = false
 	parent.animation_tree.connect("animation_finished", func(_anim): is_anim_finished = true)
-	
+
 func exit():
 	super()
 
@@ -30,3 +30,7 @@ func process_frame(delta: float) -> State:
 func process_physics(delta:float) -> State:
 	super(delta)
 	return null
+
+func _on_hit_box_body_entered(body: Player) -> void:
+	body.take_damage(10)
+	

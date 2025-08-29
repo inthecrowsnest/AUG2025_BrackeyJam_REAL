@@ -11,6 +11,7 @@ class_name Player extends Controller
 var canDash = true
 var attackSpeed = 1
 var addedDamage = 1
+var chanceDodge = 0
 
 var maxHealth: float = 100
 var health: float = 100
@@ -57,4 +58,7 @@ func _on_delay_timer_timeout() -> void:
 func obtain_item(item: ItemData) -> void:
 	#TODO
 	attackSpeed *= item.attackSpeedMultiplier
-	healthBar.value += item.addedHealth
+	health += item.addedHealth
+	healthBar.max_value = healthBar.max_value
+	addedDamage *= item.addedDamage
+	

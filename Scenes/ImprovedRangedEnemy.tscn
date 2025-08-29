@@ -835,11 +835,12 @@ motion_mode = 1
 script = ExtResource("1_sb7l0")
 
 [node name="healthBar" parent="." instance=ExtResource("2_dcup1")]
-visible = false
 offset_left = -17.0
 offset_top = -24.0
 offset_right = 17.0
 offset_bottom = -20.0
+max_value = 30.0
+value = 30.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -931,6 +932,7 @@ disabled = true
 debug_color = Color(0.809228, 0.412772, 0, 0.42)
 
 [node name="healthBar2" parent="." instance=ExtResource("2_dcup1")]
+visible = false
 offset_left = -11.0
 offset_top = -19.0
 offset_right = 10.0

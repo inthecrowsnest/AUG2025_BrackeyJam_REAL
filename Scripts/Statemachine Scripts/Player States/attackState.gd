@@ -33,3 +33,6 @@ func process_frame(delta: float) -> State:
 func process_physics(delta:float) -> State:
 	super(delta)
 	return null
+
+func _on_hit_box_body_entered(body: EnemyController) -> void:
+	body.take_damage(20 * parent.addedDamage)

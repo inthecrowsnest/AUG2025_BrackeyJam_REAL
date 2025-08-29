@@ -7,7 +7,7 @@
 script = ExtResource("1_hfs4h")
 sprite = ExtResource("2_v1ook")
 itemName = ""
-addedHealth = 10.0
+addedHealth = 50.0
 addedDamage = 0.0
 dashDelayMultiplier = 1.0
 attackSpeedMultiplier = 1.0

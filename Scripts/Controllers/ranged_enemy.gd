@@ -9,7 +9,7 @@ class_name RangedEnemy extends EnemyController
 
 var facingDirection = Vector2(0.0, 1.0)
 
-var health: int = 10
+var health: int = 30
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
@@ -32,3 +32,11 @@ func _process(delta: float) -> void:
 	
 func die():
 	$".".queue_free()
+
+func take_damage(damage:int):
+	print(health)
+	print("taken damage")
+	health -= damage
+	if health < 0: health = 0
+	healthBar.set_value(health)
+	healthBar.max_value = healthBar.max_value
