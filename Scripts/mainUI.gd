@@ -15,13 +15,29 @@ extends Control
 
 var paused: bool = false
 
+@export var label: Label
+@export var gameTimer: Timer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pause_menu.hide()
 	speed.set_frame_and_progress(1, 0)
+	
+	#making sure no funny business if you enter, leave to main menu, and play again
+	paused = false
+	pause.set_frame_and_progress(0, 0) #not paused
+	play.set_frame_and_progress(1, 0)
+			
+	pause_menu.hide()
+	Engine.time_scale = 1
+	
+	#gameTimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	update_label_text()
+
+	
 	if Input.is_action_just_pressed("pause"):
 		pause_menu_def()
 		
@@ -70,3 +86,15 @@ func scale_time(start: float, end: float):
 		Engine.time_scale += inc
 		await get_tree().create_timer(windIncTime).timeout
 	
+func update_label_text():
+	if gameTimer.time_left <= 10:
+		label.modulate = Color8(255, 0, 0)
+	else:
+		label.modulate = Color8(0, 0, 0)
+		
+	
+	var min = floor(gameTimer.wait_time / 60.0)
+	var sec = gameTimer.wait_time - (min * 60)
+	label.text = "%02d : %02d" % [min, sec]
+
+	#label.text = str(snappedf(gameTimer.time_left, 0.01))
