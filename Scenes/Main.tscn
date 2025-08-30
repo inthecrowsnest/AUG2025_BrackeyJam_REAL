@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0f7f0wcg8fqh"]
+[gd_scene load_steps=9 format=3 uid="uid://b0f7f0wcg8fqh"]
 
 [ext_resource type="PackedScene" uid="uid://dm44txshdulyl" path="res://Scenes/CharacterComponents/Player.tscn" id="1_r150o"]
 [ext_resource type="Script" uid="uid://bu5t2w41wwsl4" path="res://Scripts/hurtBox.gd" id="2_kln2b"]
 [ext_resource type="Texture2D" uid="uid://cxmfcom4px13c" path="res://icon.svg" id="3_kln2b"]
 [ext_resource type="PackedScene" uid="uid://0qmcafn57svd" path="res://Scenes/items.tscn" id="4_rgh2o"]
-[ext_resource type="Resource" uid="uid://bwkdyby23dk6l" path="res://Resources/Items/DamageMultiplier.tres" id="5_jw32o"]
-[ext_resource type="PackedScene" uid="uid://ble2uj0sygngr" path="res://Scenes/ImprovedRangedEnemy.tscn" id="7_50glp"]
-[ext_resource type="PackedScene" uid="uid://buubd3myw1mhw" path="res://Scenes/MeleeEnemy.tscn" id="7_jw32o"]
+[ext_resource type="Resource" uid="uid://bhtuf1p2jtv56" path="res://Resources/Items/DoubleDash.tres" id="4_v1gob"]
+[ext_resource type="PackedScene" uid="uid://d2i3m6igblwf8" path="res://Scenes/Boss.tscn" id="6_v1gob"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idj7w"]
 
@@ -18,9 +17,6 @@ agent_radius = 0.2
 
 [node name="Main" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-209.0]
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_r150o")]
-collision_mask = 28
 
 [node name="hurtbox" type="Area2D" parent="."]
 position = Vector2(249, 109)
@@ -40,28 +36,20 @@ position = Vector2(-47, 15)
 navigation_polygon = SubResource("NavigationPolygon_rgh2o")
 
 [node name="Items" parent="." instance=ExtResource("4_rgh2o")]
-position = Vector2(-124, -1)
-item = ExtResource("5_jw32o")
+position = Vector2(-149, -31)
+item = ExtResource("4_v1gob")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="MeleeEnemy" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("7_jw32o")]
-position = Vector2(-100, -69)
+[node name="Boss" parent="." node_paths=PackedStringArray("goal", "cheese") instance=ExtResource("6_v1gob")]
+position = Vector2(152, -85)
 goal = NodePath("../CharacterBody2D")
+cheese = NodePath("../EndGame")
 
-[node name="RangedEnemy" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("7_50glp")]
-position = Vector2(210, -76)
-goal = NodePath("../CharacterBody2D")
+[node name="EndGame" parent="." instance=ExtResource("4_rgh2o")]
+visible = false
+position = Vector2(-7, 85)
 
-[node name="RangedEnemy2" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("7_50glp")]
-position = Vector2(-2, -95)
-goal = NodePath("../CharacterBody2D")
-
-[node name="RangedEnemy3" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("7_50glp")]
-position = Vector2(79, 94)
-goal = NodePath("../CharacterBody2D")
-
-[node name="RangedEnemy4" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("7_50glp")]
-position = Vector2(-155, -58)
-goal = NodePath("../CharacterBody2D")
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_r150o")]
+collision_mask = 28

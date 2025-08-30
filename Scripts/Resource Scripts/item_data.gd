@@ -11,3 +11,4 @@ extends Resource
 @export var dashDelayMultiplier: float = 1.0
 @export var attackSpeedMultiplier: float = 1.0
 @export var chanceToDodge: float = 0.0
+@export var EndGame: bool = false

@@ -6,12 +6,18 @@ class_name Player extends Controller
 @onready var sprite = $Sprite
 @onready var delay_timer: Timer = $DelayTimer
 @onready var healthBar: ProgressBar = $healthBar
+@onready var label: Label = $Label
 
 
 var canDash = true
 var attackSpeed = 1
 var addedDamage = 1
 var chanceDodge = 0
+var endGame = false
+var dashDelay = 1
+var delayTime = 2
+
+var invincible = false
 
 var maxHealth: float = 100
 var health: float = 100
@@ -24,6 +30,9 @@ func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
 	# that way they can move and react accordingly
 	state_machine.init(self)
+	delay_timer.wait_time = delayTime
+	
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
@@ -32,21 +41,24 @@ func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 	move_and_slide()
 	healthBar.set_value(health)
+	label.text = str(ceil(delay_timer.time_left))
 	
 	if health <= 0:
 		die()
+	
+	if endGame:
+		pass
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 
 	
 func take_damage(damage:int):
-	print(health)
-	print("taken damage")
-	health -= damage
-	if health < 0: health = 0
-	healthBar.set_value(health)
-	healthBar.max_value = healthBar.max_value
+	if !invincible:
+		health -= damage
+		if health < 0: health = 0
+		healthBar.set_value(health)
+		healthBar.max_value = healthBar.max_value
 	
 func die():
 	get_tree().reload_current_scene()
@@ -54,6 +66,7 @@ func die():
 
 func _on_delay_timer_timeout() -> void:
 	canDash = true
+	label.hide()
 	
 func obtain_item(item: ItemData) -> void:
 	#TODO
@@ -61,4 +74,5 @@ func obtain_item(item: ItemData) -> void:
 	health += item.addedHealth
 	healthBar.max_value = healthBar.max_value
 	addedDamage *= item.addedDamage
-	
+	endGame = item.EndGame
+	dashDelay *= item.dashDelayMultiplier

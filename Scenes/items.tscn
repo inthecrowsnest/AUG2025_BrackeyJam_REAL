@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://0qmcafn57svd"]
 
 [ext_resource type="Script" uid="uid://0b38ofnq3mub" path="res://Scripts/itemContainer.gd" id="1_hvysp"]
-[ext_resource type="Resource" uid="uid://cn3rj4ufwxx4x" path="res://Resources/Items/AttackSpeed.tres" id="2_u4qx2"]
+[ext_resource type="Resource" uid="uid://cuvdf7mdf1x3f" path="res://Resources/Items/EndGame.tres" id="2_hvysp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvysp"]
 size = Vector2(28, 28)
@@ -11,7 +11,7 @@ size = Vector2(28, 28)
 
 [node name="Items" type="CharacterBody2D"]
 script = ExtResource("1_hvysp")
-item = ExtResource("2_u4qx2")
+item = ExtResource("2_hvysp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
